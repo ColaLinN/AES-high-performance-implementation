@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89006c41-db01-4c92-a5b0-304ff12545a1" name="Default Changelist" comment="KeyExpansion">
-      <change afterPath="$PROJECT_DIR$/out/production/idea_cryptology/AES.class" afterDir="false" />
+    <list default="true" id="89006c41-db01-4c92-a5b0-304ff12545a1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AES.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AES.java" afterDir="false" />
     </list>
@@ -35,10 +34,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AES.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="336" column="34" lean-forward="true" selection-start-line="336" selection-start-column="34" selection-end-line="336" selection-end-column="34" />
+            <state relative-caret-position="359">
+              <caret line="506" column="54" lean-forward="true" selection-start-line="506" selection-start-column="54" selection-end-line="506" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#main#0;class#AES#0" />
               </folding>
             </state>
           </provider>
@@ -109,10 +109,11 @@
     <option name="height" value="1060" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Scope 'Problems'; set:Problems; class com.intellij.psi.search.scope.ProblemsScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -124,7 +125,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -183,7 +183,8 @@
       <updated>1575441372018</updated>
       <workItem from="1575441373420" duration="3381000" />
       <workItem from="1575460056648" duration="8961000" />
-      <workItem from="1575476252642" duration="5725000" />
+      <workItem from="1575476252642" duration="6317000" />
+      <workItem from="1575504243604" duration="4785000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;idea test&quot;">
       <created>1575450874805</created>
@@ -192,13 +193,20 @@
       <option name="project" value="LOCAL" />
       <updated>1575450874805</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="KeyExpansion">
+      <created>1575482077976</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1575482077976</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18067000" />
+    <option name="totallyTimeSpent" value="23444000" />
   </component>
-  <component name="TodoView" selected-index="2">
+  <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -219,16 +227,16 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Debug" order="2" visible="true" weight="0.042016808" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.042016808" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="5" weight="0.32913166" />
+      <window_info anchor="bottom" id="TODO" order="5" visible="true" weight="0.11484594" />
       <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32913166" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Project" order="1" weight="0.13069706" />
+      <window_info anchor="right" content_ui="combo" id="Project" order="1" weight="0.16353887" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Palette" order="4" />
@@ -238,8 +246,8 @@
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Database" order="9" weight="0.17962466" />
       <window_info anchor="right" id="Version Control" order="10" weight="0.3243968" />
-      <window_info anchor="right" id="Run" order="11" weight="0.32908848" />
-      <window_info active="true" anchor="right" id="Messages" order="12" visible="true" weight="0.32908848" />
+      <window_info active="true" anchor="right" id="Run" order="11" visible="true" weight="0.32908848" />
+      <window_info anchor="right" id="Messages" order="12" weight="0.32908848" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,10 +326,11 @@
     <entry file="file://$PROJECT_DIR$/src/box.java" />
     <entry file="file://$PROJECT_DIR$/src/AES.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="336" column="34" lean-forward="true" selection-start-line="336" selection-start-column="34" selection-end-line="336" selection-end-column="34" />
+        <state relative-caret-position="359">
+          <caret line="506" column="54" lean-forward="true" selection-start-line="506" selection-start-column="54" selection-end-line="506" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#main#0;class#AES#0" />
           </folding>
         </state>
       </provider>
