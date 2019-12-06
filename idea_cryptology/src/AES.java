@@ -450,10 +450,61 @@ public class AES {
         System.out.println("hello world");
         AES aes=new AES();
         aes.encrypt();
-        aes.decode();
+//        aes.decode();
     }
-    public void decode(){
+    public void encrypt(){
+        String input="在UTF-8编码11";
+        //一个汉字有三个字节，英文一个字节，测试凑个128字节
+        byte[] byteinput=input.getBytes();
+        //转化为字节
+        for(byte X:byteinput)
+        {
+            //System.out.printf("%x",result);
+        }
+        //寻址
+        //System.out.println("\n寻址"+byteinput[0]);
+        //字节转字符串
+        //System.out.println("字节转字符串"+new String(byteinput));
+        //默认字节集为UTF-8
+        //System.out.println("默认字节集为"+Charset.defaultCharset().name());
+        //二进制流长度
+        //System.out.println(byteinput.length);
+        //这是输出字符串转六进制输出
+        byte[][] tranferbyteinput=new byte[4][4];
+        for(int i=0;i<4;i++)
+        {
+            for(int j= 0;j<4;j++)
+            {
+                tranferbyteinput[i][j]=byteinput[i*4+j];
+                //System.out.printf("%x",tranferbyteinput[i][j]);//&0xff有无都一样
+            }
+        }
+        //这下面是测试横竖顺序排列用
+//        byte[][] tranferbyteinput1=
+//                {{(byte)0x00,(byte)0x01,(byte)0x20,(byte)0x01}, {(byte)0x71,(byte)0x01,(byte)0x98,(byte)0xae}
+//                ,{(byte)0xda,(byte)0x79,(byte)0x17,(byte)0x14},{(byte)0x60,(byte)0x15,(byte)0x35,(byte)0x94}};
+//        byte[][] tranferbyteinput2=
+//                {{(byte)0x00,(byte)0x71,(byte)0xda,(byte)0x60}, {(byte)0x01,(byte)0x01,(byte)0x79,(byte)0x15}
+//                 ,{(byte)0x20,(byte)0x98,(byte)0x17,(byte)0x35},{(byte)0x01,(byte)0xae,(byte)0x14,(byte)0x94}};
+        byte[][] tranferbyteinput2=
+                {{(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00}, {(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00}
+                        ,{(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00},{(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00}};
+
+        //生成轮密钥
+        this.KeyExpansion(tranferbyteinput2);
+        this.inv_KeyExpansion(tranferbyteinput2);
+//        this.Rijndael();
+    }
+    public void decode(byte[] inputstate,byte[][] key){
         //输出密文
+        for(int j=0;j<4;j++)
+        {
+            for(int i=0;i<4;i++)
+            {
+                State[i][j]=inputstate[i*4+j];
+            }
+        }
+        inv_KeyExpansion(key);
         System.out.print("\n");
         System.out.println("加密state如下");
         for(int i=0;i<Nb;i++){
@@ -510,52 +561,19 @@ public class AES {
         }
         System.out.print("\n");
     }
-    public void encrypt(){
-        String input="在UTF-8编码11";
-        //一个汉字有三个字节，英文一个字节，测试凑个128字节
-        byte[] byteinput=input.getBytes();
-        //转化为字节
-        int result;
-        for(byte X:byteinput)
+    public byte[] Rijndael(byte[] inputstate,byte[][] key){
+        for(byte X:inputstate)
         {
-            result=X&0xff;
-            //System.out.printf("%x",result);
+            System.out.printf("%x",X);
         }
-        //寻址
-        //System.out.println("\n寻址"+byteinput[0]);
-        //字节转字符串
-        //System.out.println("字节转字符串"+new String(byteinput));
-        //默认字节集为UTF-8
-        //System.out.println("默认字节集为"+Charset.defaultCharset().name());
-        //二进制流长度
-        //System.out.println(byteinput.length);
-        //这是输出字符串转六进制输出
-        byte[][] tranferbyteinput=new byte[4][4];
-        for(int i=0;i<4;i++)
+        for(int j=0;j<4;j++)
         {
-            for(int j= 0;j<4;j++)
+            for(int i=0;i<4;i++)
             {
-                tranferbyteinput[i][j]=byteinput[i*4+j];
-                //System.out.printf("%x",tranferbyteinput[i][j]);//&0xff有无都一样
+                State[i][j]=inputstate[i*4+j];
             }
         }
-        //这下面是测试横竖顺序排列用
-//        byte[][] tranferbyteinput1=
-//                {{(byte)0x00,(byte)0x01,(byte)0x20,(byte)0x01}, {(byte)0x71,(byte)0x01,(byte)0x98,(byte)0xae}
-//                ,{(byte)0xda,(byte)0x79,(byte)0x17,(byte)0x14},{(byte)0x60,(byte)0x15,(byte)0x35,(byte)0x94}};
-//        byte[][] tranferbyteinput2=
-//                {{(byte)0x00,(byte)0x71,(byte)0xda,(byte)0x60}, {(byte)0x01,(byte)0x01,(byte)0x79,(byte)0x15}
-//                 ,{(byte)0x20,(byte)0x98,(byte)0x17,(byte)0x35},{(byte)0x01,(byte)0xae,(byte)0x14,(byte)0x94}};
-        byte[][] tranferbyteinput2=
-                {{(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00}, {(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00}
-                 ,{(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00},{(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00}};
-
-        //生成轮密钥
-        this.KeyExpansion(tranferbyteinput2);
-        this.inv_KeyExpansion(tranferbyteinput2);
-        this.Rijndael();
-    }
-    public void Rijndael(){
+        KeyExpansion(key);
         System.out.print("\n");
         System.out.println("初始state如下");
         for(int i=0;i<Nb;i++){
@@ -599,7 +617,7 @@ public class AES {
             this.State[1][j]=(byte)((byte)(Sbox[State[1][j]&0xff]&0xff)^RoundKey[1][40+j]);
             this.State[2][j]=(byte)((byte)(Sbox[State[2][j]&0xff]&0xff)^RoundKey[2][40+j]);
             this.State[3][j]=(byte)((byte)(Sbox[State[3][j]&0xff]&0xff)^RoundKey[3][40+j]);
-            //System.out.printf("\nT表"+"轮"+j+"列"+"%02x %02x %02x %02x",State[0][j],State[1][j],State[2][j],State[3][j]);
+            System.out.printf("\nT表"+"轮"+j+"列"+"%02x %02x %02x %02x",State[0][j],State[1][j],State[2][j],State[3][j]);
         }
         //2019.12.6加密成功
         //密钥
@@ -611,6 +629,15 @@ public class AES {
 //        这是一个byte的输出实验，事实证明0xff后得到int型输出255，而不&0xff则输出-1
 //        byte a=(byte)0xff;
 //        System.out.println("\naAAAAAAAAAA"+(a&0xff)+" a:"+a);
+        byte[] output=new byte[16];
+        for(int j=0;j<4;j++)
+        {
+            for(int i=0;i<4;i++)
+            {
+                output[i*4+j]=State[i][j];
+            }
+        }
+        return output;
     }
     public void KeyExpansion(byte[][] originkey){
         this.CipherKey=originkey;
@@ -666,7 +693,7 @@ public class AES {
             inttemp[1]=Temp[1]&0xff;
             inttemp[2]=Temp[2]&0xff;
             inttemp[3]=Temp[3]&0xff;
-            System.out.printf("\n第"+i+"列："+"%02x %02x %02x %02x",inttemp[0],inttemp[1],inttemp[2],inttemp[3]);
+            //System.out.printf("\n第"+i+"列："+"%02x %02x %02x %02x",inttemp[0],inttemp[1],inttemp[2],inttemp[3]);
         }
     }
     public void inv_KeyExpansion(byte[][] originkey){
