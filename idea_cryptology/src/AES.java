@@ -446,13 +446,14 @@ public class AES {
     private int Nk=4;
     //迭代轮数
     private int Nr=10;
+    //行移位值
+    private int c1=1,c2=2,c3=3;
     public static void main(String[] args) {
         System.out.println("hello world");
         AES aes=new AES();
         aes.encrypt();
 
     }
-
     public void encrypt(){
         String input="在UTF-8编码11";
         //一个汉字有三个字节，英文一个字节，测试凑个128字节
@@ -497,21 +498,60 @@ public class AES {
         this.Rijndael();
     }
     public void Rijndael(){
+        System.out.print("\n");
+        for(int i=0;i<Nb;i++){
+            System.out.printf("%02x %02x %02x %02x",State[0][i%Nb],State[1][i%Nb],State[2][i%Nb],State[3][i%Nb]);
+            System.out.print("|");
+        }
+        System.out.print("\n");
         AddRoundKey(0);
         for(int i=1;i<this.Nr;i++)
         {
-            for(int j=1;j<this.Nb;j++)
+            //System.out.printf("\nT表"+"%02x %02x %02x %02x",State[0][0],State[1][0],State[2][0],State[3][0]);
+            ShiftRow();
+            //System.out.printf("\nT表"+"%02x %02x %02x %02x",State[0][0],State[1][0],State[2][0],State[3][0]);
+            for(int j=0;j<this.Nb;j++)
             {
-                this.State[0][j]=(byte) (te0[State[0][j]&0xff]^te1[State[1][j]&0xff]^te2[State[2][j]&0xff]^te3[State[3][j]&0xff]);
-                this.State[1][j]=(byte) (te0[State[0][j]&0xff]^te1[State[1][j]&0xff]^te2[State[2][j]&0xff]^te3[State[3][j]&0xff]);
-                this.State[2][j]=(byte) (te0[State[0][j]&0xff]^te1[State[1][j]&0xff]^te2[State[2][j]&0xff]^te3[State[3][j]&0xff]);
-                this.State[3][j]=(byte) (te0[State[0][j]&0xff]^te1[State[1][j]&0xff]^te2[State[2][j]&0xff]^te3[State[3][j]&0xff]);
+                int keyi=i*Nb+j;//用于查找需要匹配哪个key
+                //输出没有查T表之前的State以用于debug
+//                System.out.printf("\nORINGT"+i+"轮"+j+"列"+"%02x %02x %02x %02x",State[0][j],State[1][j],State[2][j],State[3][j]);
+                long temp= (te0[State[0][j]&0xff]^te1[State[1][j]&0xff]^te2[State[2][j]&0xff]^te3[State[3][j]&0xff]);
+                //下面是测试用，现在看来te表是Low<->High（32<->0）对齐啊，而且不用在这里
+//                this.State[0][j]=(byte)((byte)(temp&0xff)^RoundKey[0][keyi]);
+//                this.State[1][j]=(byte)((temp>>>8&0xff)^RoundKey[1][keyi]);
+//                this.State[2][j]=(byte)((temp>>16&0xff)^RoundKey[2][keyi]);
+//                this.State[3][j]=(byte)((temp>>24&0xff)^RoundKey[3][keyi]);
+                this.State[0][j]=(byte)((temp>>24&0xff)^RoundKey[0][keyi]);
+                this.State[1][j]=(byte)((temp>>16&0xff)^RoundKey[1][keyi]);
+                this.State[2][j]=(byte)((temp>>8&0xff)^RoundKey[2][keyi]);
+                this.State[3][j]=(byte)((temp&0xff)^RoundKey[3][keyi]);
+                //输出每次的密钥和STATE以用于debug
+                //System.out.printf("\nK表"+i+"轮"+j+"列"+"%02x %02x %02x %02x",RoundKey[0][keyi],RoundKey[1][keyi],RoundKey[2][keyi],RoundKey[3][keyi]);
+
             }
-            AddRoundKey(i);
+//           AddRoundKey(i);
+//            break;
         }
-        //T表使用
-        byte c00=(byte) (te0[State[0][0]&0xff]^te1[State[1][0]&0xff]^te2[State[2][0]&0xff]^te3[State[3][0]&0xff]);
-        System.out.printf("\n这是c00:%2x",c00);
+        //下面是最后一轮加密，不能查T表---------------------------------------
+        ShiftRow();
+        for(int j=0;j<this.Nb;j++)
+        {
+            this.State[0][j]=(byte)((byte)(Sbox[State[0][j]&0xff]&0xff)^RoundKey[0][40+j]);
+            this.State[1][j]=(byte)((byte)(Sbox[State[1][j]&0xff]&0xff)^RoundKey[1][40+j]);
+            this.State[2][j]=(byte)((byte)(Sbox[State[2][j]&0xff]&0xff)^RoundKey[2][40+j]);
+            this.State[3][j]=(byte)((byte)(Sbox[State[3][j]&0xff]&0xff)^RoundKey[3][40+j]);
+            System.out.printf("\nT表"+"轮"+j+"列"+"%02x %02x %02x %02x",State[0][j],State[1][j],State[2][j],State[3][j]);
+        }
+        //2019.12.6加密成功
+        //密钥
+        //明文00010001|01a198af|da781734|86153566|
+        //密文6cdd596b|8f5642cb|d23b4798|1a65422a|
+
+        //上面是最后一轮加密，不能查T表---------------------------------------
+
+//        这是一个byte的输出实验，事实证明0xff后得到int型输出255，而不&0xff则输出-1
+//        byte a=(byte)0xff;
+//        System.out.println("\naAAAAAAAAAA"+(a&0xff)+" a:"+a);
     }
     public void KeyExpansion(byte[][] originkey){
         this.CipherKey=originkey;
@@ -572,25 +612,45 @@ public class AES {
     }
     public void AddRoundKey(int i){
         int max=this.Nb*(i+1);
-        for(;i<max;i++){
+        for(i=i*Nb;i<max;i++){
+            //System.out.printf("\nAddRoundKey第"+i+"列："+"%02x %02x %02x %02x",State[0][i%Nb],State[1][i%Nb],State[2][i%Nb],State[3][i%Nb]);
             State[0][i%Nb]=(byte)(State[0][i%Nb]^RoundKey[0][i]);
             State[1][i%Nb]=(byte)(State[1][i%Nb]^RoundKey[1][i]);
             State[2][i%Nb]=(byte)(State[2][i%Nb]^RoundKey[2][i]);
             State[3][i%Nb]=(byte)(State[3][i%Nb]^RoundKey[3][i]);
-            System.out.printf("\nAddRoundKey第"+i+"列："+"%02x %02x %02x %02x",State[0][i],State[1][i],State[2][i],State[3][i]);
+            //System.out.printf("\nK表"+i+"轮"+"列"+"%02x %02x %02x %02x",RoundKey[0][i],RoundKey[1][i],RoundKey[2][i],RoundKey[3][i]);
+            System.out.printf("\nAddRoundKey第"+i+"列："+"%02x %02x %02x %02x",State[0][i%Nb],State[1][i%Nb],State[2][i%Nb],State[3][i%Nb]);
         }
     }
     public void Round(){
 
     }
     public void FinalRound(){
-
     }
     public void ByteSub(){
 
     }
     public void ShiftRow(){
-
+        byte temp;
+        //第一行移一位
+        temp=State[1][0];
+        State[1][0]=State[1][1];
+        State[1][1]=State[1][2];
+        State[1][2]=State[1][3];
+        State[1][3]=temp;
+        //第二行移两位
+        temp=State[2][0];
+        State[2][0]=State[2][2];
+        State[2][2]=temp;
+        temp=State[2][1];
+        State[2][1]=State[2][3];
+        State[2][3]=temp;
+        //第三行移三位
+        temp=State[3][0];
+        State[3][0]=State[3][3];
+        State[3][3]=State[3][2];
+        State[3][2]=State[3][1];
+        State[3][1]=temp;
     }
     public void MixColumn(){
 
