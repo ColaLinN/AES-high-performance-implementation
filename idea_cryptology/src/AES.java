@@ -495,13 +495,13 @@ public class AES {
         this.inv_KeyExpansion(tranferbyteinput2);
 //        this.Rijndael();
     }
-    public void decode(byte[] inputstate,byte[][] key){
+    public byte[] decode(byte[] inputstate,byte[][] key){
         //输出密文
         for(int j=0;j<4;j++)
         {
             for(int i=0;i<4;i++)
             {
-                State[i][j]=inputstate[i*4+j];
+                State[i][j]=inputstate[i+j*4];
             }
         }
         inv_KeyExpansion(key);
@@ -560,6 +560,15 @@ public class AES {
             System.out.print("|");
         }
         System.out.print("\n");
+        byte[] output=new byte[16];
+        for(int j=0;j<4;j++)
+        {
+            for(int i=0;i<4;i++)
+            {
+                output[i+j*4]=State[i][j];
+            }
+        }
+        return output;
     }
     public byte[] Rijndael(byte[] inputstate,byte[][] key){
         for(byte X:inputstate)
@@ -570,7 +579,7 @@ public class AES {
         {
             for(int i=0;i<4;i++)
             {
-                State[i][j]=inputstate[i*4+j];
+                State[i][j]=inputstate[i+j*4];
             }
         }
         KeyExpansion(key);
@@ -617,7 +626,7 @@ public class AES {
             this.State[1][j]=(byte)((byte)(Sbox[State[1][j]&0xff]&0xff)^RoundKey[1][40+j]);
             this.State[2][j]=(byte)((byte)(Sbox[State[2][j]&0xff]&0xff)^RoundKey[2][40+j]);
             this.State[3][j]=(byte)((byte)(Sbox[State[3][j]&0xff]&0xff)^RoundKey[3][40+j]);
-            System.out.printf("\nT表"+"轮"+j+"列"+"%02x %02x %02x %02x",State[0][j],State[1][j],State[2][j],State[3][j]);
+            //System.out.printf("\nT表"+"轮"+j+"列"+"%02x %02x %02x %02x",State[0][j],State[1][j],State[2][j],State[3][j]);
         }
         //2019.12.6加密成功
         //密钥
@@ -634,7 +643,7 @@ public class AES {
         {
             for(int i=0;i<4;i++)
             {
-                output[i*4+j]=State[i][j];
+                output[i+j*4]=State[i][j];
             }
         }
         return output;
@@ -746,7 +755,6 @@ public class AES {
                 invRoundKey[3][i]=RoundKey[3][i];
             }
         }
-        System.out.println();
         for(int i=0;i<Nb*(Nr+1);i++)
         {
             //System.out.printf("\n逆密钥第"+i+"列："+"%02x %02x %02x %02x",invRoundKey[0][i]&0xff,invRoundKey[1][i]&0xff,invRoundKey[2][i]&0xff,invRoundKey[3][i]&0xff);

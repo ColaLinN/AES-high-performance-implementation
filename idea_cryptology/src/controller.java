@@ -3,9 +3,7 @@ import java.nio.charset.Charset;
 public class controller {
     public static void main(String[] args) {
         System.out.println("hello world");
-        String input="12345678";//一个汉字有三个字节，英文一个字节，测试凑个128字节
-        String o="dd林";
-        input=o+input;
+        String input="12345678蜗牛h";//一个汉字有三个字节，英文一个字节，测试凑个128字节
         byte[] byteinput=input.getBytes();//转化为字节
         for(byte X:byteinput)
         {
@@ -15,8 +13,8 @@ public class controller {
         System.out.println("\n字节转字符串"+new String(byteinput));//字节转字符串
         System.out.println("默认字节集为"+ Charset.defaultCharset().name());//默认字节集为UTF-8
         System.out.println(byteinput.length);//二进制流长度
-        byte[] hello=new byte[16-byteinput.length];
-        byte[] inputbyte=new  byte[16];
+        byte[] hello=new byte[16-byteinput.length];//创建一个全零的
+        byte[] inputbyte=new  byte[16];//最终拼接成的第三方byte
         if(byteinput.length<16)//填充
         {
             System.arraycopy(byteinput,0,inputbyte,0,byteinput.length);
@@ -35,7 +33,8 @@ public class controller {
         AES aes=new AES();
         //aes.KeyExpansion(key);
         //aes.inv_KeyExpansion(key);
-
-        aes.decode(aes.Rijndael(inputbyte,key),key);
+        System.out.println("\n字节转字符串:"+new String(inputbyte));//字节转字符串
+        byte[] helloworld=aes.decode(aes.Rijndael(inputbyte,key),key);
+        System.out.println("\n字节转字符串:"+new String(helloworld));//字节转字符串
     }
 }
