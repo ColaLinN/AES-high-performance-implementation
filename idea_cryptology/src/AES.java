@@ -440,14 +440,12 @@ public class AES {
     private byte[][] CipherKey=new byte[4][4];
     //轮密钥
     private byte[][] RoundKey=new byte[4][44];
-    //数据列数
-    private int Nb=4;
-    //数据行数
-    private int Nk=4;
-    //迭代轮数
-    private int Nr=10;
-    //行移位值
-    private int c1=1,c2=2,c3=3;
+    //解密扩展密钥
+    private byte[][] invRoundKey=new byte[4][44];
+    private int Nb=4;//数据列数
+    private int Nk=4;//数据行数
+    private int Nr=10;//迭代轮数
+    private int c1=1,c2=2,c3=3;//行移位值
     public static void main(String[] args) {
         System.out.println("hello world");
         AES aes=new AES();
@@ -457,6 +455,7 @@ public class AES {
     public void decode(){
         //输出密文
         System.out.print("\n");
+        System.out.println("加密state如下");
         for(int i=0;i<Nb;i++){
             System.out.printf("%02x%02x%02x%02x",State[0][i%Nb],State[1][i%Nb],State[2][i%Nb],State[3][i%Nb]);
             System.out.print("|");
@@ -465,16 +464,15 @@ public class AES {
         //逆轮函数的加密
         for(int i=Nk*Nr;i<Nk*(Nr+1);i++)//invAddRoundKey(0);
         {
-            State[0][i%Nb]=(byte)(State[0][i%Nb]^RoundKey[0][i]);
-            State[1][i%Nb]=(byte)(State[1][i%Nb]^RoundKey[1][i]);
-            State[2][i%Nb]=(byte)(State[2][i%Nb]^RoundKey[2][i]);
-            State[3][i%Nb]=(byte)(State[3][i%Nb]^RoundKey[3][i]);
+            State[0][i%Nb]=(byte)(State[0][i%Nb]^invRoundKey[0][i]);
+            State[1][i%Nb]=(byte)(State[1][i%Nb]^invRoundKey[1][i]);
+            State[2][i%Nb]=(byte)(State[2][i%Nb]^invRoundKey[2][i]);
+            State[3][i%Nb]=(byte)(State[3][i%Nb]^invRoundKey[3][i]);
             //第一轮解密已经成功
             //System.out.printf("\nK表"+i+"轮"+"%02x %02x %02x %02x",RoundKey[0][i],RoundKey[1][i],RoundKey[2][i],RoundKey[3][i]);
             //System.out.printf("\nAddRoundKey第"+i+"列："+"%02x %02x %02x %02x",State[0][i%Nb],State[1][i%Nb],State[2][i%Nb],State[3][i%Nb]);
-
         }
-        for(int i=Nr;i>0;i--)
+        for(int i=Nr;i>1;i--)
         {
             inv_ShiftRow();
             for(int j=0;j<this.Nb;j++)
@@ -483,26 +481,34 @@ public class AES {
                 //输出没有查T表之前的State以用于debug
 //                System.out.printf("\nORINGT"+i+"轮"+j+"列"+"%02x %02x %02x %02x",State[0][j],State[1][j],State[2][j],State[3][j]);
                 long temp= (td0[State[0][j]&0xff]^td1[State[1][j]&0xff]^td2[State[2][j]&0xff]^td3[State[3][j]&0xff]);
-                this.State[0][j]=(byte)((temp>>24&0xff)^RoundKey[0][keyi]);
-                this.State[1][j]=(byte)((temp>>16&0xff)^RoundKey[1][keyi]);
-                this.State[2][j]=(byte)((temp>>8&0xff)^RoundKey[2][keyi]);
-                this.State[3][j]=(byte)((temp&0xff)^RoundKey[3][keyi]);
+                this.State[0][j]=(byte)((temp>>24&0xff)^invRoundKey[0][keyi]);
+                this.State[1][j]=(byte)((temp>>16&0xff)^invRoundKey[1][keyi]);
+                this.State[2][j]=(byte)((temp>>8&0xff)^invRoundKey[2][keyi]);
+                this.State[3][j]=(byte)((temp&0xff)^invRoundKey[3][keyi]);
                 //输出每次的密钥和STATE以用于debug
-                System.out.printf("\nK表"+i+"轮"+j+"列"+"%02x %02x %02x %02x",RoundKey[0][keyi],RoundKey[1][keyi],RoundKey[2][keyi],RoundKey[3][keyi]);
+                //System.out.printf("\nK表"+i+"轮"+j+"列"+"%02x %02x %02x %02x",invRoundKey[0][keyi],invRoundKey[1][keyi],invRoundKey[2][keyi],invRoundKey[3][keyi]);
+                //System.out.printf("\nT表"+"轮"+j+"列"+"%02x %02x %02x %02x",State[0][j],State[1][j],State[2][j],State[3][j]);
             }
 //           AddRoundKey(i);
 //            break;
         }
         //下面是最后一轮加密，不能查T表---------------------------------------
-        ShiftRow();
+        inv_ShiftRow();
         for(int j=0;j<this.Nb;j++)
         {
-            this.State[0][j]=(byte)((byte)(Sbox[State[0][j]&0xff]&0xff)^RoundKey[0][40+j]);
-            this.State[1][j]=(byte)((byte)(Sbox[State[1][j]&0xff]&0xff)^RoundKey[1][40+j]);
-            this.State[2][j]=(byte)((byte)(Sbox[State[2][j]&0xff]&0xff)^RoundKey[2][40+j]);
-            this.State[3][j]=(byte)((byte)(Sbox[State[3][j]&0xff]&0xff)^RoundKey[3][40+j]);
+            State[0][j]=(byte)((iSbox[State[0][j]&0xff]&0xff)^invRoundKey[0][j]);
+            State[1][j]=(byte)((iSbox[State[1][j]&0xff]&0xff)^invRoundKey[1][j]);
+            State[2][j]=(byte)((iSbox[State[2][j]&0xff]&0xff)^invRoundKey[2][j]);
+            State[3][j]=(byte)((iSbox[State[3][j]&0xff]&0xff)^invRoundKey[3][j]);
             //System.out.printf("\nT表"+"轮"+j+"列"+"%02x %02x %02x %02x",State[0][j],State[1][j],State[2][j],State[3][j]);
         }
+        System.out.print("\n");
+        System.out.println("解密state如下");
+        for(int i=0;i<Nb;i++){
+            System.out.printf("%02x%02x%02x%02x",State[0][i%Nb],State[1][i%Nb],State[2][i%Nb],State[3][i%Nb]);
+            System.out.print("|");
+        }
+        System.out.print("\n");
     }
     public void encrypt(){
         String input="在UTF-8编码11";
@@ -513,7 +519,7 @@ public class AES {
         for(byte X:byteinput)
         {
             result=X&0xff;
-            System.out.printf("%x",result);
+            //System.out.printf("%x",result);
         }
         //寻址
         //System.out.println("\n寻址"+byteinput[0]);
@@ -537,18 +543,21 @@ public class AES {
 //        byte[][] tranferbyteinput1=
 //                {{(byte)0x00,(byte)0x01,(byte)0x20,(byte)0x01}, {(byte)0x71,(byte)0x01,(byte)0x98,(byte)0xae}
 //                ,{(byte)0xda,(byte)0x79,(byte)0x17,(byte)0x14},{(byte)0x60,(byte)0x15,(byte)0x35,(byte)0x94}};
+//        byte[][] tranferbyteinput2=
+//                {{(byte)0x00,(byte)0x71,(byte)0xda,(byte)0x60}, {(byte)0x01,(byte)0x01,(byte)0x79,(byte)0x15}
+//                 ,{(byte)0x20,(byte)0x98,(byte)0x17,(byte)0x35},{(byte)0x01,(byte)0xae,(byte)0x14,(byte)0x94}};
         byte[][] tranferbyteinput2=
-                {{(byte)0x00,(byte)0x71,(byte)0xda,(byte)0x60}, {(byte)0x01,(byte)0x01,(byte)0x79,(byte)0x15}
-                 ,{(byte)0x20,(byte)0x98,(byte)0x17,(byte)0x35},{(byte)0x01,(byte)0xae,(byte)0x14,(byte)0x94}};
+                {{(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00}, {(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00}
+                 ,{(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00},{(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00}};
+
         //生成轮密钥
         this.KeyExpansion(tranferbyteinput2);
-        //列混淆六表使用,由于最后一轮没有列混淆所以不需要
-//        int x=log_02[0x87]&0xff^log_03[0x6E]&0xff^0x46^0xA6;
-//        System.out.printf("\n列混淆六表使用：%x",x);
+        this.inv_KeyExpansion(tranferbyteinput2);
         this.Rijndael();
     }
     public void Rijndael(){
         System.out.print("\n");
+        System.out.println("初始state如下");
         for(int i=0;i<Nb;i++){
             System.out.printf("%02x%02x%02x%02x",State[0][i%Nb],State[1][i%Nb],State[2][i%Nb],State[3][i%Nb]);
             System.out.print("|");
@@ -590,7 +599,7 @@ public class AES {
             this.State[1][j]=(byte)((byte)(Sbox[State[1][j]&0xff]&0xff)^RoundKey[1][40+j]);
             this.State[2][j]=(byte)((byte)(Sbox[State[2][j]&0xff]&0xff)^RoundKey[2][40+j]);
             this.State[3][j]=(byte)((byte)(Sbox[State[3][j]&0xff]&0xff)^RoundKey[3][40+j]);
-            System.out.printf("\nT表"+"轮"+j+"列"+"%02x %02x %02x %02x",State[0][j],State[1][j],State[2][j],State[3][j]);
+            //System.out.printf("\nT表"+"轮"+j+"列"+"%02x %02x %02x %02x",State[0][j],State[1][j],State[2][j],State[3][j]);
         }
         //2019.12.6加密成功
         //密钥
@@ -660,6 +669,62 @@ public class AES {
             System.out.printf("\n第"+i+"列："+"%02x %02x %02x %02x",inttemp[0],inttemp[1],inttemp[2],inttemp[3]);
         }
     }
+    public void inv_KeyExpansion(byte[][] originkey){
+        this.CipherKey=originkey;
+        byte[] Temp=new byte[4];
+        byte[] Rconbyte=new byte[1];
+        int[] inttemp=new int[4];
+        //之后这里的循环可以拆开优化速度
+        for(int i=0;i<Nk;i++){
+            RoundKey[0][i]=originkey[0][i];
+            RoundKey[1][i]=originkey[1][i];
+            RoundKey[2][i]=originkey[2][i];
+            RoundKey[3][i]=originkey[3][i];
+            //System.out.printf("\n第"+i+"列："+"%02x %02x %02x %02x",RoundKey[0][i],inttemp[1],inttemp[2],inttemp[3]);
+            //System.out.printf("\n第"+i+"列："+"%02x %02x %02x %02x",RoundKey[0][i]&0xff,RoundKey[1][i]&0xff,RoundKey[2][i]&0xff,RoundKey[3][i]&0xff);
+        }
+        for(int i=Nk;i<Nb*(Nr+1);i++){
+            Temp[0]=RoundKey[0][i-1];
+            Temp[1]=RoundKey[1][i-1];
+            Temp[2]=RoundKey[2][i-1];
+            Temp[3]=RoundKey[3][i-1];
+            if(i%Nk==0){
+                byte a=Temp[0];
+                Temp[0]=(byte)((Sbox[Temp[1]&0xff])^Rcon[i/Nk]);
+                Temp[1]=(byte)(Sbox[Temp[2]&0xff]);
+                Temp[2]=(byte)(Sbox[Temp[3]&0xff]);
+                Temp[3]=(byte)(Sbox[a&0xff]);
+            }
+            RoundKey[0][i]=(byte)(RoundKey[0][i-Nk]^Temp[0]);
+            RoundKey[1][i]=(byte)(RoundKey[1][i-Nk]^Temp[1]);
+            RoundKey[2][i]=(byte)(RoundKey[2][i-Nk]^Temp[2]);
+            RoundKey[3][i]=(byte)(RoundKey[3][i-Nk]^Temp[3]);
+            //System.out.printf("\n第"+i+"列："+"%02x %02x %02x %02x",RoundKey[0][i],RoundKey[1][i],RoundKey[2][i],RoundKey[3][i]);
+        }
+        //以上生成原有的key
+        //System.out.printf("\n%2x %2x %2x %2x",RoundKey[0][4]&0xff,RoundKey[1][4]&0xff,RoundKey[2][4]&0xff,RoundKey[3][4]&0xff);
+        //以下对除了第一个轮密钥和最后一个轮密钥之外的所有论密钥invMixColumm
+        for(int i=0;i<Nb*(Nr+1);i++)
+        {
+            if(i>3&&i<40){
+                invRoundKey[0][i]=(byte)(log_0e[(RoundKey[0][i]&0xff)]^log_0b[RoundKey[1][i]&0xff]^log_0d[RoundKey[2][i]&0xff]^log_09[RoundKey[3][i]&0xff]);
+                invRoundKey[1][i]=(byte)(log_09[RoundKey[0][i]&0xff]^log_0e[RoundKey[1][i]&0xff]^log_0b[RoundKey[2][i]&0xff]^log_0d[RoundKey[3][i]&0xff]);
+                invRoundKey[2][i]=(byte)(log_0d[RoundKey[0][i]&0xff]^log_09[RoundKey[1][i]&0xff]^log_0e[RoundKey[2][i]&0xff]^log_0b[RoundKey[3][i]&0xff]);
+                invRoundKey[3][i]=(byte)(log_0b[RoundKey[0][i]&0xff]^log_0d[RoundKey[1][i]&0xff]^log_09[RoundKey[2][i]&0xff]^log_0e[RoundKey[3][i]&0xff]);
+            }
+            else {
+                invRoundKey[0][i]=RoundKey[0][i];
+                invRoundKey[1][i]=RoundKey[1][i];
+                invRoundKey[2][i]=RoundKey[2][i];
+                invRoundKey[3][i]=RoundKey[3][i];
+            }
+        }
+        System.out.println();
+        for(int i=0;i<Nb*(Nr+1);i++)
+        {
+            //System.out.printf("\n逆密钥第"+i+"列："+"%02x %02x %02x %02x",invRoundKey[0][i]&0xff,invRoundKey[1][i]&0xff,invRoundKey[2][i]&0xff,invRoundKey[3][i]&0xff);
+        }
+    }
     public void AddRoundKey(int i){
         int max=this.Nb*(i+1);
         for(i=i*Nb;i<max;i++){
@@ -669,7 +734,7 @@ public class AES {
             State[2][i%Nb]=(byte)(State[2][i%Nb]^RoundKey[2][i]);
             State[3][i%Nb]=(byte)(State[3][i%Nb]^RoundKey[3][i]);
             //System.out.printf("\nK表"+i+"轮"+"列"+"%02x %02x %02x %02x",RoundKey[0][i],RoundKey[1][i],RoundKey[2][i],RoundKey[3][i]);
-            System.out.printf("\nAddRoundKey第"+i+"列："+"%02x %02x %02x %02x",State[0][i%Nb],State[1][i%Nb],State[2][i%Nb],State[3][i%Nb]);
+            //System.out.printf("\nAddRoundKey第"+i+"列："+"%02x %02x %02x %02x",State[0][i%Nb],State[1][i%Nb],State[2][i%Nb],State[3][i%Nb]);
         }
     }
     public void Round(){
@@ -702,9 +767,6 @@ public class AES {
         State[3][2]=State[3][1];
         State[3][1]=temp;
     }
-    public void MixColumn(){
-
-    }
     public void inv_ShiftRow(){
         byte temp;
         //第一行移一位
@@ -726,5 +788,8 @@ public class AES {
         State[3][2]=State[3][3];
         State[3][3]=State[3][0];
         State[3][0]=temp;
+    }
+    public void MixColumn(){
+
     }
 }
