@@ -63,7 +63,7 @@ public class controller {
             byte[] inputbyte=new byte[inputStream.available()];
             inputStream.read(inputbyte);//把所有字节流读出
             inputStream.close();
-            //计时
+            //计时file_
             long endTime =  System.currentTimeMillis();
             long usedTime = (endTime-startTime);
             System.out.println("读明文文件时间："+usedTime+"毫秒");
@@ -135,7 +135,8 @@ public class controller {
         try{
             AES aes=new AES();
             long startTime =  System.currentTimeMillis();//计时开始
-            FileInputStream inputStream =new FileInputStream(new File(inputpath));
+            FileInputStream file_inputStream =new FileInputStream(new File(inputpath));
+            BufferedInputStream inputStream=new BufferedInputStream(file_inputStream);
             byte[] inputbyte=new byte[inputStream.available()];
             inputStream.read(inputbyte);//把所有字节流读出
             inputStream.close();
@@ -143,7 +144,9 @@ public class controller {
             long endTime =  System.currentTimeMillis();
             long usedTime = (endTime-startTime);
             System.out.println("读密文文件时间："+usedTime+"毫秒");
-            FileOutputStream outputStream=new FileOutputStream(new File(outputpath));
+            //Buffer牛逼，可以大幅提高读写文件速度
+            FileOutputStream file_outputStream=new FileOutputStream(new File(outputpath));
+            BufferedOutputStream outputStream=new BufferedOutputStream(file_outputStream);
 
 //            System.out.println("\ninputbyte的内容:"+new String(inputbyte));//字节转字符串
 //            int j=1;

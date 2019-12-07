@@ -504,6 +504,13 @@ public class AES {
                 State[i][j]=inputstate[i+j*4];
             }
         }
+        for(int j=0;j<4;j++)
+        {
+            for(int i=0;i<4;i++)
+            {
+                State[i][j]=inputstate[i+j*4];
+            }
+        }
         inv_KeyExpansion(key);
         //19.12.7 for 测试注释
 //        System.out.print("\n");

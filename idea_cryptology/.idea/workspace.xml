@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="89006c41-db01-4c92-a5b0-304ff12545a1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/idea_cryptology/AES.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/idea_cryptology/AES.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -34,8 +35,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AES.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="570" column="22" lean-forward="true" selection-start-line="570" selection-start-column="22" selection-end-line="570" selection-end-column="22" />
+            <state relative-caret-position="434">
+              <caret line="564" column="26" selection-start-line="564" selection-start-column="26" selection-end-line="564" selection-end-column="26" />
               <folding>
                 <element signature="n#!!doc;n#State#0;n#AES#0" />
                 <element signature="method#main#0;class#AES#0" />
@@ -50,7 +51,7 @@
                 <element signature="method#ShiftRow#0;class#AES#0" />
                 <element signature="method#inv_ShiftRow#0;class#AES#0" />
                 <element signature="method#MixColumn#0;class#AES#0" />
-                <marker date="1575687002228" expanded="false" signature="57471:58012" ph="..." />
+                <marker date="1575689937180" expanded="false" signature="57644:58185" ph="..." />
               </folding>
             </state>
           </provider>
@@ -59,10 +60,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="134" column="43" lean-forward="true" selection-start-line="134" selection-start-column="43" selection-end-line="134" selection-end-column="43" />
+            <state relative-caret-position="3036">
+              <caret line="209" lean-forward="true" selection-start-line="209" selection-end-line="209" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#429#484#0" />
+                <element signature="e#853#926#0" />
+                <element signature="e#1479#1503#0" />
+                <element signature="e#1831#1845#0" />
+                <element signature="e#2971#3053#0" />
+                <element signature="e#4153#4193#0" />
+                <element signature="e#5794#5876#0" />
+                <element signature="e#6965#6995#0" />
+                <element signature="e#7316#7370#0" />
               </folding>
             </state>
           </provider>
@@ -243,7 +252,7 @@
       <workItem from="1575504243604" duration="4984000" />
       <workItem from="1575632002651" duration="15374000" />
       <workItem from="1575647428670" duration="7862000" />
-      <workItem from="1575681930668" duration="7223000" />
+      <workItem from="1575681930668" duration="10091000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;idea test&quot;">
       <created>1575450874805</created>
@@ -315,11 +324,25 @@
       <option name="project" value="LOCAL" />
       <updated>1575688650670</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="读取文件解密，并且写入成功">
+      <created>1575689225312</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1575689225312</updated>
+    </task>
+    <task id="LOCAL-00012" summary="更改代码提高加密速度">
+      <created>1575691252680</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1575691252680</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54102000" />
+    <option name="totallyTimeSpent" value="56970000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -342,7 +365,7 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Maven" order="6" weight="0.3297587" />
       <window_info id="TODO" order="7" weight="0.11461126" />
-      <window_info id="Debug" order="8" weight="0.04155496" />
+      <window_info id="Debug" order="8" visible="true" weight="0.04155496" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Cvs" order="2" weight="0.25" />
@@ -460,7 +483,9 @@
     <MESSAGE value="新加了解密字符串的string输出" />
     <MESSAGE value="文件读入加密成功" />
     <MESSAGE value="加密信息写入文件成功" />
-    <option name="LAST_COMMIT_MESSAGE" value="加密信息写入文件成功" />
+    <MESSAGE value="读取文件解密，并且写入成功" />
+    <MESSAGE value="更改代码提高加密速度" />
+    <option name="LAST_COMMIT_MESSAGE" value="更改代码提高加密速度" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -514,8 +539,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AES.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="570" column="22" lean-forward="true" selection-start-line="570" selection-start-column="22" selection-end-line="570" selection-end-column="22" />
+        <state relative-caret-position="434">
+          <caret line="564" column="26" selection-start-line="564" selection-start-column="26" selection-end-line="564" selection-end-column="26" />
           <folding>
             <element signature="n#!!doc;n#State#0;n#AES#0" />
             <element signature="method#main#0;class#AES#0" />
@@ -530,17 +555,25 @@
             <element signature="method#ShiftRow#0;class#AES#0" />
             <element signature="method#inv_ShiftRow#0;class#AES#0" />
             <element signature="method#MixColumn#0;class#AES#0" />
-            <marker date="1575687002228" expanded="false" signature="57471:58012" ph="..." />
+            <marker date="1575689937180" expanded="false" signature="57644:58185" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="134" column="43" lean-forward="true" selection-start-line="134" selection-start-column="43" selection-end-line="134" selection-end-column="43" />
+        <state relative-caret-position="3036">
+          <caret line="209" lean-forward="true" selection-start-line="209" selection-end-line="209" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#429#484#0" />
+            <element signature="e#853#926#0" />
+            <element signature="e#1479#1503#0" />
+            <element signature="e#1831#1845#0" />
+            <element signature="e#2971#3053#0" />
+            <element signature="e#4153#4193#0" />
+            <element signature="e#5794#5876#0" />
+            <element signature="e#6965#6995#0" />
+            <element signature="e#7316#7370#0" />
           </folding>
         </state>
       </provider>
