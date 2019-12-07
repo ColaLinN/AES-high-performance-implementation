@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89006c41-db01-4c92-a5b0-304ff12545a1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/idea_cryptology/AES.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/idea_cryptology/AES.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AES.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AES.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller.java" afterDir="false" />
     </list>
@@ -31,16 +33,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AES.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="664" column="32" lean-forward="true" selection-start-line="664" selection-start-column="32" selection-end-line="664" selection-end-column="32" />
+            <state relative-caret-position="-1666">
+              <caret line="498" column="14" lean-forward="true" selection-start-line="498" selection-start-column="14" selection-end-line="498" selection-end-column="14" />
               <folding>
                 <element signature="n#!!doc;n#State#0;n#AES#0" />
                 <element signature="method#main#0;class#AES#0" />
-                <element signature="method#encrypt#0;class#AES#0" />
                 <element signature="e#44334#44352#0" />
+                <element signature="method#Rijndael#0;class#AES#0" />
                 <element signature="e#47626#47658#0" />
                 <element signature="method#AddRoundKey#0;class#AES#0" />
                 <element signature="method#Round#0;class#AES#0" />
@@ -49,27 +51,31 @@
                 <element signature="method#ShiftRow#0;class#AES#0" />
                 <element signature="method#inv_ShiftRow#0;class#AES#0" />
                 <element signature="method#MixColumn#0;class#AES#0" />
-                <marker date="1575692245750" expanded="false" signature="56859:57400" ph="..." />
+                <marker date="1575693377150" expanded="false" signature="57029:57570" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="693">
-              <caret line="136" selection-start-line="136" selection-end-line="136" selection-end-column="38" />
+            <state relative-caret-position="339">
+              <caret line="177" column="24" selection-start-line="177" selection-start-column="24" selection-end-line="177" selection-end-column="24" />
               <folding>
-                <element signature="e#429#484#0" />
-                <element signature="e#853#926#0" />
-                <element signature="e#1479#1503#0" />
-                <element signature="e#1831#1845#0" />
+                <element signature="method#readfile_encrypt#0;class#controller#0" />
+                <element signature="e#1949#3113#0" />
                 <element signature="e#2971#3053#0" />
+                <element signature="e#2296#3078#1" />
+                <element signature="e#2237#2294#1" />
+                <element signature="e#2362#2461#1" />
                 <element signature="e#4153#4193#0" />
+                <element signature="e#5127#5185#0" />
+                <element signature="e#1790#1834#0" />
                 <element signature="e#5794#5876#0" />
-                <element signature="e#6965#6995#0" />
+                <element signature="e#6981#7011#0" />
                 <element signature="e#7316#7370#0" />
+                <element signature="e#10814#10828#0" />
               </folding>
             </state>
           </provider>
@@ -250,7 +256,7 @@
       <workItem from="1575504243604" duration="4984000" />
       <workItem from="1575632002651" duration="15374000" />
       <workItem from="1575647428670" duration="7862000" />
-      <workItem from="1575681930668" duration="10473000" />
+      <workItem from="1575681930668" duration="12620000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;idea test&quot;">
       <created>1575450874805</created>
@@ -343,11 +349,18 @@
       <option name="project" value="LOCAL" />
       <updated>1575692180244</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="30M/s">
+      <created>1575692617275</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1575692617275</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="57352000" />
+    <option name="totallyTimeSpent" value="59499000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -384,13 +397,13 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Messages" order="6" sideWeight="0.19883041" weight="0.35455763" />
+      <window_info anchor="right" id="Messages" order="6" sideWeight="0.19883041" weight="0.19034852" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Terminal" order="9" weight="0.32908848" />
       <window_info anchor="right" id="Database" order="10" weight="0.17962466" />
       <window_info anchor="right" id="Version Control" order="11" weight="0.3243968" />
-      <window_info active="true" anchor="right" id="Run" order="12" sideWeight="0.8011696" visible="true" weight="0.347185" />
+      <window_info active="true" anchor="right" id="Run" order="12" sideWeight="0.8011696" visible="true" weight="0.2969169" />
     </layout>
     <layout-to-restore>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
@@ -491,7 +504,8 @@
     <MESSAGE value="读取文件解密，并且写入成功" />
     <MESSAGE value="更改代码提高加密速度" />
     <MESSAGE value="20M/s" />
-    <option name="LAST_COMMIT_MESSAGE" value="20M/s" />
+    <MESSAGE value="30M/s" />
+    <option name="LAST_COMMIT_MESSAGE" value="30M/s" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -543,33 +557,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="136" selection-start-line="136" selection-end-line="136" selection-end-column="38" />
-          <folding>
-            <element signature="e#429#484#0" />
-            <element signature="e#853#926#0" />
-            <element signature="e#1479#1503#0" />
-            <element signature="e#1831#1845#0" />
-            <element signature="e#2971#3053#0" />
-            <element signature="e#4153#4193#0" />
-            <element signature="e#5794#5876#0" />
-            <element signature="e#6965#6995#0" />
-            <element signature="e#7316#7370#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AES.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="664" column="32" lean-forward="true" selection-start-line="664" selection-start-column="32" selection-end-line="664" selection-end-column="32" />
+        <state relative-caret-position="-1666">
+          <caret line="498" column="14" lean-forward="true" selection-start-line="498" selection-start-column="14" selection-end-line="498" selection-end-column="14" />
           <folding>
             <element signature="n#!!doc;n#State#0;n#AES#0" />
             <element signature="method#main#0;class#AES#0" />
-            <element signature="method#encrypt#0;class#AES#0" />
             <element signature="e#44334#44352#0" />
+            <element signature="method#Rijndael#0;class#AES#0" />
             <element signature="e#47626#47658#0" />
             <element signature="method#AddRoundKey#0;class#AES#0" />
             <element signature="method#Round#0;class#AES#0" />
@@ -578,7 +574,29 @@
             <element signature="method#ShiftRow#0;class#AES#0" />
             <element signature="method#inv_ShiftRow#0;class#AES#0" />
             <element signature="method#MixColumn#0;class#AES#0" />
-            <marker date="1575692245750" expanded="false" signature="56859:57400" ph="..." />
+            <marker date="1575693377150" expanded="false" signature="57029:57570" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="177" column="24" selection-start-line="177" selection-start-column="24" selection-end-line="177" selection-end-column="24" />
+          <folding>
+            <element signature="method#readfile_encrypt#0;class#controller#0" />
+            <element signature="e#1949#3113#0" />
+            <element signature="e#2971#3053#0" />
+            <element signature="e#2296#3078#1" />
+            <element signature="e#2237#2294#1" />
+            <element signature="e#2362#2461#1" />
+            <element signature="e#4153#4193#0" />
+            <element signature="e#5127#5185#0" />
+            <element signature="e#1790#1834#0" />
+            <element signature="e#5794#5876#0" />
+            <element signature="e#6981#7011#0" />
+            <element signature="e#7316#7370#0" />
+            <element signature="e#10814#10828#0" />
           </folding>
         </state>
       </provider>

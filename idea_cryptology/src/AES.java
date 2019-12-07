@@ -491,8 +491,8 @@ public class AES {
                         ,{(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00},{(byte)0x00,(byte)0x00,(byte)0x00,(byte)0x00}};
 
         //生成轮密钥
-        this.KeyExpansion(tranferbyteinput2);
-        this.inv_KeyExpansion(tranferbyteinput2);
+//        this.KeyExpansion(tranferbyteinput2);
+//        this.inv_KeyExpansion(tranferbyteinput2);
 //        this.Rijndael();
     }
     public byte[] decode(byte[] inputstate){
@@ -660,15 +660,21 @@ public class AES {
         }
         return output;
     }
-    public void KeyExpansion(byte[][] originkey){
-        this.CipherKey=originkey;
+    public void KeyExpansion(byte[] originkey){
+        for(int j=0;j<4;j++)
+        {
+            for(int i=0;i<4;i++)
+            {
+                CipherKey[i][j]=originkey[i+j*4];
+            }
+        }
         byte[] Temp=new byte[4];
         //之后这里的循环可以拆开优化速度
         for(int i=0;i<Nk;i++){
-            RoundKey[0][i]=originkey[0][i];
-            RoundKey[1][i]=originkey[1][i];
-            RoundKey[2][i]=originkey[2][i];
-            RoundKey[3][i]=originkey[3][i];
+            RoundKey[0][i]=CipherKey[0][i];
+            RoundKey[1][i]=CipherKey[1][i];
+            RoundKey[2][i]=CipherKey[2][i];
+            RoundKey[3][i]=CipherKey[3][i];
             //System.out.printf("\n第"+i+"列："+"%02x %02x %02x %02x",RoundKey[0][i],inttemp[1],inttemp[2],inttemp[3]);
             //System.out.printf("\n第"+i+"列："+"%02x %02x %02x %02x",RoundKey[0][i]&0xff,RoundKey[1][i]&0xff,RoundKey[2][i]&0xff,RoundKey[3][i]&0xff);
         }
@@ -691,17 +697,21 @@ public class AES {
             //System.out.printf("\n第"+i+"列："+"%02x %02x %02x %02x",RoundKey[0][i],RoundKey[1][i],RoundKey[2][i],RoundKey[3][i]);
         }
     }
-    public void inv_KeyExpansion(byte[][] originkey){
-        this.CipherKey=originkey;
+    public void inv_KeyExpansion(byte[] originkey){
+        for(int j=0;j<4;j++)
+        {
+            for(int i=0;i<4;i++)
+            {
+                CipherKey[i][j]=originkey[i+j*4];
+            }
+        }
         byte[] Temp=new byte[4];
-        byte[] Rconbyte=new byte[1];
-        int[] inttemp=new int[4];
         //之后这里的循环可以拆开优化速度
         for(int i=0;i<Nk;i++){
-            RoundKey[0][i]=originkey[0][i];
-            RoundKey[1][i]=originkey[1][i];
-            RoundKey[2][i]=originkey[2][i];
-            RoundKey[3][i]=originkey[3][i];
+            RoundKey[0][i]=CipherKey[0][i];
+            RoundKey[1][i]=CipherKey[1][i];
+            RoundKey[2][i]=CipherKey[2][i];
+            RoundKey[3][i]=CipherKey[3][i];
             //System.out.printf("\n第"+i+"列："+"%02x %02x %02x %02x",RoundKey[0][i],inttemp[1],inttemp[2],inttemp[3]);
             //System.out.printf("\n第"+i+"列："+"%02x %02x %02x %02x",RoundKey[0][i]&0xff,RoundKey[1][i]&0xff,RoundKey[2][i]&0xff,RoundKey[3][i]&0xff);
         }
