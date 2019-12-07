@@ -511,7 +511,7 @@ public class AES {
             System.out.printf("%02x%02x%02x%02x",State[0][i%Nb],State[1][i%Nb],State[2][i%Nb],State[3][i%Nb]);
             System.out.print("|");
         }
-        System.out.print("\n");
+//        System.out.print("\n");
         //逆轮函数的加密
         for(int i=Nk*Nr;i<Nk*(Nr+1);i++)//invAddRoundKey(0);
         {
@@ -571,10 +571,10 @@ public class AES {
         return output;
     }
     public byte[] Rijndael(byte[] inputstate,byte[][] key){
-        for(byte X:inputstate)
-        {
-            System.out.printf("%x",X);
-        }
+//        for(byte X:inputstate)
+//        {
+//            System.out.printf("%x",X);
+//        }
         for(int j=0;j<4;j++)
         {
             for(int i=0;i<4;i++)
@@ -589,7 +589,7 @@ public class AES {
             System.out.printf("%02x%02x%02x%02x",State[0][i%Nb],State[1][i%Nb],State[2][i%Nb],State[3][i%Nb]);
             System.out.print("|");
         }
-        System.out.print("\n");
+//        System.out.print("\n");
         AddRoundKey(0);
         for(int i=1;i<this.Nr;i++)
         {
