@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="89006c41-db01-4c92-a5b0-304ff12545a1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AES.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AES.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -35,13 +34,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AES.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1856">
-              <caret line="650" column="44" lean-forward="true" selection-start-line="650" selection-start-column="44" selection-end-line="650" selection-end-column="44" />
+            <state relative-caret-position="560">
+              <caret line="570" column="22" lean-forward="true" selection-start-line="570" selection-start-column="22" selection-end-line="570" selection-end-column="22" />
               <folding>
                 <element signature="n#!!doc;n#State#0;n#AES#0" />
                 <element signature="method#main#0;class#AES#0" />
                 <element signature="method#encrypt#0;class#AES#0" />
-                <element signature="method#decode#0;class#AES#0" />
+                <element signature="e#47626#47658#0" />
                 <element signature="method#KeyExpansion#0;class#AES#0" />
                 <element signature="method#inv_KeyExpansion#0;class#AES#0" />
                 <element signature="method#AddRoundKey#0;class#AES#0" />
@@ -60,13 +59,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+            <state relative-caret-position="417">
+              <caret line="134" column="43" lean-forward="true" selection-start-line="134" selection-start-column="43" selection-end-line="134" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#main#0;class#controller#0" />
-                <element signature="e#3127#3128#0" expanded="true" />
-                <element signature="e#3154#3155#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -177,26 +173,7 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="idea_cryptology" type="b2602c69:ProjectViewProjectNode" />
-              <item name="idea_cryptology" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="idea_cryptology" type="b2602c69:ProjectViewProjectNode" />
-              <item name="idea_cryptology" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -266,7 +243,7 @@
       <workItem from="1575504243604" duration="4984000" />
       <workItem from="1575632002651" duration="15374000" />
       <workItem from="1575647428670" duration="7862000" />
-      <workItem from="1575681930668" duration="5354000" />
+      <workItem from="1575681930668" duration="7223000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;idea test&quot;">
       <created>1575450874805</created>
@@ -324,11 +301,25 @@
       <option name="project" value="LOCAL" />
       <updated>1575655792101</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="文件读入加密成功">
+      <created>1575687322046</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1575687322046</updated>
+    </task>
+    <task id="LOCAL-00010" summary="加密信息写入文件成功">
+      <created>1575688650670</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1575688650670</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52233000" />
+    <option name="totallyTimeSpent" value="54102000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -349,16 +340,16 @@
       <window_info id="UI Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Maven" order="6" weight="0.3297587" />
+      <window_info id="TODO" order="7" weight="0.11461126" />
+      <window_info id="Debug" order="8" weight="0.04155496" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Debug" order="2" weight="0.042016808" />
-      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="5" weight="0.11484594" />
-      <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32913166" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Cvs" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Docker" order="4" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="5" />
+      <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Project" order="1" weight="0.16487935" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
@@ -366,12 +357,12 @@
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Messages" order="6" sideWeight="0.19883041" weight="0.35455763" />
-      <window_info anchor="right" id="Maven" order="7" weight="0.3297587" />
-      <window_info anchor="right" id="Capture Analysis" order="8" />
-      <window_info anchor="right" id="Palette&#9;" order="9" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Terminal" order="9" weight="0.32908848" />
       <window_info anchor="right" id="Database" order="10" weight="0.17962466" />
       <window_info anchor="right" id="Version Control" order="11" weight="0.3243968" />
-      <window_info active="true" anchor="right" id="Run" order="12" sideWeight="0.8011696" visible="true" weight="0.34316355" />
+      <window_info active="true" anchor="right" id="Run" order="12" sideWeight="0.8011696" visible="true" weight="0.347185" />
     </layout>
     <layout-to-restore>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
@@ -467,7 +458,9 @@
     <MESSAGE value="加解密成功" />
     <MESSAGE value="能对字符串进行填充加密解密" />
     <MESSAGE value="新加了解密字符串的string输出" />
-    <option name="LAST_COMMIT_MESSAGE" value="新加了解密字符串的string输出" />
+    <MESSAGE value="文件读入加密成功" />
+    <MESSAGE value="加密信息写入文件成功" />
+    <option name="LAST_COMMIT_MESSAGE" value="加密信息写入文件成功" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -521,13 +514,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AES.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1856">
-          <caret line="650" column="44" lean-forward="true" selection-start-line="650" selection-start-column="44" selection-end-line="650" selection-end-column="44" />
+        <state relative-caret-position="560">
+          <caret line="570" column="22" lean-forward="true" selection-start-line="570" selection-start-column="22" selection-end-line="570" selection-end-column="22" />
           <folding>
             <element signature="n#!!doc;n#State#0;n#AES#0" />
             <element signature="method#main#0;class#AES#0" />
             <element signature="method#encrypt#0;class#AES#0" />
-            <element signature="method#decode#0;class#AES#0" />
+            <element signature="e#47626#47658#0" />
             <element signature="method#KeyExpansion#0;class#AES#0" />
             <element signature="method#inv_KeyExpansion#0;class#AES#0" />
             <element signature="method#AddRoundKey#0;class#AES#0" />
@@ -544,13 +537,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="51" column="25" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+        <state relative-caret-position="417">
+          <caret line="134" column="43" lean-forward="true" selection-start-line="134" selection-start-column="43" selection-end-line="134" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#main#0;class#controller#0" />
-            <element signature="e#3127#3128#0" expanded="true" />
-            <element signature="e#3154#3155#0" expanded="true" />
           </folding>
         </state>
       </provider>
