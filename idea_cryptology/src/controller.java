@@ -56,8 +56,9 @@ public class controller {
     public byte[] file_encrypt(String inputpath,String outputpath,byte[][] key){
         try{
             //计时
-            long startTime =  System.currentTimeMillis();
             AES aes=new AES();
+            aes.KeyExpansion(key);
+            long startTime =  System.currentTimeMillis();
             FileInputStream file_inputStream =new FileInputStream(new File(inputpath));
             BufferedInputStream inputStream=new BufferedInputStream(file_inputStream);
             byte[] inputbyte=new byte[inputStream.available()];
@@ -116,7 +117,7 @@ public class controller {
 //                    }
 //                    j++;
 //                }
-                byte[] encryptdata=aes.Rijndael(inputbyte_for_encrypt,key);
+                byte[] encryptdata=aes.Rijndael(inputbyte_for_encrypt);//加密
                 outputStream.write(encryptdata);
 //                encryptdata=aes.decode(encryptdata,key);
 //                System.out.println("--------------------after:"+new String(encryptdata));//字节转字符串
@@ -134,6 +135,7 @@ public class controller {
     public byte[] file_decode(String inputpath,String outputpath,byte[][] key){
         try{
             AES aes=new AES();
+            aes.inv_KeyExpansion(key);
             long startTime =  System.currentTimeMillis();//计时开始
             FileInputStream file_inputStream =new FileInputStream(new File(inputpath));
             BufferedInputStream inputStream=new BufferedInputStream(file_inputStream);
@@ -194,7 +196,7 @@ public class controller {
 //                    }
 //                    j++;
 //                }
-                byte[] decodedata =aes.decode(inputbyte_for_encrypt,key);
+                byte[] decodedata =aes.decode(inputbyte_for_encrypt);
                 outputStream.write(decodedata);
 //                System.out.println("--------------------after:"+new String(decodedata));//字节转字符串
             }

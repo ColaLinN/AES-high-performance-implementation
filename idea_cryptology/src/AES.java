@@ -495,7 +495,7 @@ public class AES {
         this.inv_KeyExpansion(tranferbyteinput2);
 //        this.Rijndael();
     }
-    public byte[] decode(byte[] inputstate,byte[][] key){
+    public byte[] decode(byte[] inputstate){
         //输出密文
         for(int j=0;j<4;j++)
         {
@@ -511,7 +511,7 @@ public class AES {
                 State[i][j]=inputstate[i+j*4];
             }
         }
-        inv_KeyExpansion(key);
+//        inv_KeyExpansion(key);
         //19.12.7 for 测试注释
 //        System.out.print("\n");
 //        System.out.println("加密state如下");
@@ -581,7 +581,7 @@ public class AES {
         }
         return output;
     }
-    public byte[] Rijndael(byte[] inputstate,byte[][] key){
+    public byte[] Rijndael(byte[] inputstate){
 //        for(byte X:inputstate)
 //        {
 //            System.out.printf("%x",X);
@@ -593,7 +593,7 @@ public class AES {
                 State[i][j]=inputstate[i+j*4];
             }
         }
-        KeyExpansion(key);
+//        KeyExpansion(key);
         //19.12.7 for 测试注释
 //        System.out.print("\n");
 //        System.out.println("初始state如下");
@@ -663,25 +663,14 @@ public class AES {
     public void KeyExpansion(byte[][] originkey){
         this.CipherKey=originkey;
         byte[] Temp=new byte[4];
-        byte[] Rconbyte=new byte[1];
-        int[] inttemp=new int[4];
         //之后这里的循环可以拆开优化速度
         for(int i=0;i<Nk;i++){
             RoundKey[0][i]=originkey[0][i];
             RoundKey[1][i]=originkey[1][i];
             RoundKey[2][i]=originkey[2][i];
             RoundKey[3][i]=originkey[3][i];
-            //无所谓的变换
-            Temp[0]=RoundKey[0][i];
-            Temp[1]=RoundKey[1][i];
-            Temp[2]=RoundKey[2][i];
-            Temp[3]=RoundKey[3][i];
-            inttemp[0]=Temp[0]&0xff;
-            inttemp[1]=Temp[1]&0xff;
-            inttemp[2]=Temp[2]&0xff;
-            inttemp[3]=Temp[3]&0xff;
             //System.out.printf("\n第"+i+"列："+"%02x %02x %02x %02x",RoundKey[0][i],inttemp[1],inttemp[2],inttemp[3]);
-//            System.out.print("\n第"+i+"列："+RoundKey[0][i]+RoundKey[1][i]+RoundKey[2][i]+RoundKey[3][i]);
+            //System.out.printf("\n第"+i+"列："+"%02x %02x %02x %02x",RoundKey[0][i]&0xff,RoundKey[1][i]&0xff,RoundKey[2][i]&0xff,RoundKey[3][i]&0xff);
         }
         for(int i=Nk;i<Nb*(Nr+1);i++){
             Temp[0]=RoundKey[0][i-1];
@@ -689,32 +678,17 @@ public class AES {
             Temp[2]=RoundKey[2][i-1];
             Temp[3]=RoundKey[3][i-1];
             if(i%Nk==0){
-                //有时间优化一下啦
-                Rconbyte[0]=(byte)(Rcon[i/Nk]&0xff);
-//                System.out.println(Rconbyte[0]&0xff);
-                inttemp[0]=Temp[0]&0xff;
-                inttemp[1]=Temp[1]&0xff;
-                inttemp[2]=Temp[2]&0xff;
-                inttemp[3]=Temp[3]&0xff;
-                Temp[0]=(byte)((Sbox[inttemp[1]]&0xff)^Rconbyte[0]);
-                Temp[1]=(byte)((Sbox[inttemp[2]]&0xff));
-                Temp[2]=(byte)((Sbox[inttemp[3]]&0xff));
-                Temp[3]=(byte)((Sbox[inttemp[0]]&0xff));
+                byte a=Temp[0];
+                Temp[0]=(byte)((Sbox[Temp[1]&0xff])^Rcon[i/Nk]);
+                Temp[1]=(byte)(Sbox[Temp[2]&0xff]);
+                Temp[2]=(byte)(Sbox[Temp[3]&0xff]);
+                Temp[3]=(byte)(Sbox[a&0xff]);
             }
             RoundKey[0][i]=(byte)(RoundKey[0][i-Nk]^Temp[0]);
             RoundKey[1][i]=(byte)(RoundKey[1][i-Nk]^Temp[1]);
             RoundKey[2][i]=(byte)(RoundKey[2][i-Nk]^Temp[2]);
             RoundKey[3][i]=(byte)(RoundKey[3][i-Nk]^Temp[3]);
-            //下面无所谓的
-            Temp[0]=RoundKey[0][i];
-            Temp[1]=RoundKey[1][i];
-            Temp[2]=RoundKey[2][i];
-            Temp[3]=RoundKey[3][i];
-            inttemp[0]=Temp[0]&0xff;
-            inttemp[1]=Temp[1]&0xff;
-            inttemp[2]=Temp[2]&0xff;
-            inttemp[3]=Temp[3]&0xff;
-            //System.out.printf("\n第"+i+"列："+"%02x %02x %02x %02x",inttemp[0],inttemp[1],inttemp[2],inttemp[3]);
+            //System.out.printf("\n第"+i+"列："+"%02x %02x %02x %02x",RoundKey[0][i],RoundKey[1][i],RoundKey[2][i],RoundKey[3][i]);
         }
     }
     public void inv_KeyExpansion(byte[][] originkey){
