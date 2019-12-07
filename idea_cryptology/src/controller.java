@@ -1,6 +1,4 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 
@@ -41,37 +39,56 @@ public class controller {
 //        byte[] helloworld=aes.decode(aes.Rijndael(inputbyte,key),key);
 //        System.out.println("\n字节转字符串:"+new String(helloworld));//字节转字符串
 
+        /** 获取当前系统时间*/
+        long startTime =  System.currentTimeMillis();
         controller controller=new controller();
         //记得把key优化以下，输入为一串字符串
         controller.file_encrypt("F:\\桌面\\学科\\大三上\\专必-密码学\\大作业\\test.txt","F:\\桌面\\学科\\大三上\\专必-密码学\\大作业\\write.txt",key);
+        long endTime =  System.currentTimeMillis();
+        long usedTime = (endTime-startTime);
+        System.out.println("加密时间："+usedTime+"毫秒");
+        startTime=System.currentTimeMillis();
         controller.file_decode("F:\\桌面\\学科\\大三上\\专必-密码学\\大作业\\write.txt","F:\\桌面\\学科\\大三上\\专必-密码学\\大作业\\decode.txt",key);
+        endTime =  System.currentTimeMillis();
+        usedTime = (endTime-startTime);
+        System.out.println("解密时间："+usedTime+"毫秒");
     }
     public byte[] file_encrypt(String inputpath,String outputpath,byte[][] key){
         try{
-            FileInputStream inputStream =new FileInputStream(new File(inputpath));
+            //计时
+            long startTime =  System.currentTimeMillis();
+            AES aes=new AES();
+            FileInputStream file_inputStream =new FileInputStream(new File(inputpath));
+            BufferedInputStream inputStream=new BufferedInputStream(file_inputStream);
             byte[] inputbyte=new byte[inputStream.available()];
             inputStream.read(inputbyte);//把所有字节流读出
             inputStream.close();
-            FileOutputStream outputStream=new FileOutputStream(new File(outputpath));
+            //计时
+            long endTime =  System.currentTimeMillis();
+            long usedTime = (endTime-startTime);
+            System.out.println("读明文文件时间："+usedTime+"毫秒");
+            FileOutputStream file_outputStream=new FileOutputStream(new File(outputpath));
+            BufferedOutputStream outputStream=new BufferedOutputStream(file_outputStream);
+//            System.out.println("\ninputbyte的内容:"+new String(inputbyte));//字节转字符串
 
-            System.out.println("\ninputbyte的内容:"+new String(inputbyte));//字节转字符串
-            int j=1;
-            for(byte X:inputbyte)
-            {
-                System.out.printf("%2x",X);
-                if(j%4==0)
-                {
-                    System.out.print("|");
-                }
-                if(j%16==0)
-                {
-                    System.out.print("\n");
-                }
-                j++;
-            }
-            System.out.print("\n以上读的数据");
-            System.out.println("\n读数据的字节长度："+inputbyte.length);
+//            int j=1;
+//            for(byte X:inputbyte)//inputbyte的字节流
+//            {
+//                System.out.printf("%2x",X);
+//                if(j%4==0)
+//                {
+//                    System.out.print("|");
+//                }
+//                if(j%16==0)
+//                {
+//                    System.out.print("\n");
+//                }
+//                j++;
+//            }
+//            System.out.print("\n以上读的数据");
+//            System.out.println("\n读数据的字节长度："+inputbyte.length);
             byte[] inputbyte_for_encrypt=new  byte[16];//最终拼接成的第三方byte
+            startTime=System.currentTimeMillis();
             for(int i=0;i<inputbyte.length;){
                 if(inputbyte.length-i>=16) {
                     System.arraycopy(inputbyte,i,inputbyte_for_encrypt,0,16);
@@ -82,31 +99,32 @@ public class controller {
                     Arrays.fill(inputbyte_for_encrypt,inputbyte.length-i,16,(byte)(0));//16-inputbyte.length-i
                     i=inputbyte.length;
                 }
-                j=1;
-                System.out.print("\n-------------------before:"+new String(inputbyte_for_encrypt)+"");//字节转字符串
-                System.out.println("\n读的state如下");
-                for(byte X:inputbyte_for_encrypt)
-                {
-                    System.out.printf("%02x",X);
-                    if(j%16==0)
-                    {
-//                        System.out.print("\n");
-                        break;
-                    }
-                    if(j%4==0)
-                    {
-                        System.out.print("|");
-                    }
-                    j++;
-                }
-                AES aes=new AES();
+//                j=1;//j是上面定义的，要用就重写变量名
+//                System.out.print("\n-------------------before:"+new String(inputbyte_for_encrypt)+"");//字节转字符串
+//                System.out.println("\n读的state如下");
+//                for(byte X:inputbyte_for_encrypt)//输出读的128（也可能是填充成的）位的字节流
+//                {
+//                    System.out.printf("%02x",X);
+//                    if(j%16==0)
+//                    {
+////                        System.out.print("\n");
+//                        break;
+//                    }
+//                    if(j%4==0)
+//                    {
+//                        System.out.print("|");
+//                    }
+//                    j++;
+//                }
                 byte[] encryptdata=aes.Rijndael(inputbyte_for_encrypt,key);
                 outputStream.write(encryptdata);
-                encryptdata=aes.decode(encryptdata,key);
-                System.out.println("--------------------after:"+new String(encryptdata));//字节转字符串
+//                encryptdata=aes.decode(encryptdata,key);
+//                System.out.println("--------------------after:"+new String(encryptdata));//字节转字符串
             }
+            endTime =  System.currentTimeMillis();
+            usedTime = (endTime-startTime);
+            System.out.println("加密锁时间："+usedTime+"毫秒");
             outputStream.close();
-            inputStream.close();
             return null;
         }catch(Exception e){
             e.printStackTrace(System.out);
@@ -115,29 +133,35 @@ public class controller {
     }
     public byte[] file_decode(String inputpath,String outputpath,byte[][] key){
         try{
+            AES aes=new AES();
+            long startTime =  System.currentTimeMillis();//计时开始
             FileInputStream inputStream =new FileInputStream(new File(inputpath));
             byte[] inputbyte=new byte[inputStream.available()];
             inputStream.read(inputbyte);//把所有字节流读出
             inputStream.close();
+            //计时
+            long endTime =  System.currentTimeMillis();
+            long usedTime = (endTime-startTime);
+            System.out.println("读密文文件时间："+usedTime+"毫秒");
             FileOutputStream outputStream=new FileOutputStream(new File(outputpath));
 
-            System.out.println("\ninputbyte的内容:"+new String(inputbyte));//字节转字符串
-            int j=1;
-            for(byte X:inputbyte)
-            {
-                System.out.printf("%2x",X);
-                if(j%4==0)
-                {
-                    System.out.print("|");
-                }
-                if(j%16==0)
-                {
-                    System.out.print("\n");
-                }
-                j++;
-            }
-            System.out.print("\n以上读的数据");
-            System.out.println("\n读数据的字节长度："+inputbyte.length);
+//            System.out.println("\ninputbyte的内容:"+new String(inputbyte));//字节转字符串
+//            int j=1;
+//            for(byte X:inputbyte)//输出读的内容的字节流
+//            {
+//                System.out.printf("%2x",X);
+//                if(j%4==0)
+//                {
+//                    System.out.print("|");
+//                }
+//                if(j%16==0)
+//                {
+//                    System.out.print("\n");
+//                }
+//                j++;
+//            }
+//            System.out.print("\n以上读的数据");
+//            System.out.println("\n读数据的字节长度："+inputbyte.length);
             byte[] inputbyte_for_encrypt=new  byte[16];//最终拼接成的第三方byte
             for(int i=0;i<inputbyte.length;){
                 if(inputbyte.length-i>=16) {
@@ -150,27 +174,26 @@ public class controller {
                     Arrays.fill(inputbyte_for_encrypt,inputbyte.length-i,16,(byte)(0));//16-inputbyte.length-i
                     i=inputbyte.length;
                 }
-                j=1;
-                System.out.print("\n-------------------before:"+new String(inputbyte_for_encrypt)+"");//字节转字符串
-                System.out.println("\n读的state如下");
-                for(byte X:inputbyte_for_encrypt)
-                {
-                    System.out.printf("%02x",X);
-                    if(j%16==0)
-                    {
-//                        System.out.print("\n");
-                        break;
-                    }
-                    if(j%4==0)
-                    {
-                        System.out.print("|");
-                    }
-                    j++;
-                }
-                AES aes=new AES();
+//                j=1;//j是上面用的
+//                System.out.print("\n-------------------before:"+new String(inputbyte_for_encrypt)+"");//字节转字符串
+//                System.out.println("\n读的state如下");
+//                for(byte X:inputbyte_for_encrypt)
+//                {
+//                    System.out.printf("%02x",X);
+//                    if(j%16==0)
+//                    {
+////                        System.out.print("\n");
+//                        break;
+//                    }
+//                    if(j%4==0)
+//                    {
+//                        System.out.print("|");
+//                    }
+//                    j++;
+//                }
                 byte[] decodedata =aes.decode(inputbyte_for_encrypt,key);
                 outputStream.write(decodedata);
-                System.out.println("--------------------after:"+new String(decodedata));//字节转字符串
+//                System.out.println("--------------------after:"+new String(decodedata));//字节转字符串
             }
             outputStream.close();
             inputStream.close();

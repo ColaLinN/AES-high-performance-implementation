@@ -505,12 +505,13 @@ public class AES {
             }
         }
         inv_KeyExpansion(key);
-        System.out.print("\n");
-        System.out.println("加密state如下");
-        for(int i=0;i<Nb;i++){
-            System.out.printf("%02x%02x%02x%02x",State[0][i%Nb],State[1][i%Nb],State[2][i%Nb],State[3][i%Nb]);
-            System.out.print("|");
-        }
+        //19.12.7 for 测试注释
+//        System.out.print("\n");
+//        System.out.println("加密state如下");
+//        for(int i=0;i<Nb;i++){
+//            System.out.printf("%02x%02x%02x%02x",State[0][i%Nb],State[1][i%Nb],State[2][i%Nb],State[3][i%Nb]);
+//            System.out.print("|");
+//        }
 //        System.out.print("\n");
         //逆轮函数的加密
         for(int i=Nk*Nr;i<Nk*(Nr+1);i++)//invAddRoundKey(0);
@@ -553,13 +554,16 @@ public class AES {
             State[3][j]=(byte)((iSbox[State[3][j]&0xff]&0xff)^invRoundKey[3][j]);
             //System.out.printf("\nT表"+"轮"+j+"列"+"%02x %02x %02x %02x",State[0][j],State[1][j],State[2][j],State[3][j]);
         }
-        System.out.print("\n");
-        System.out.println("解密state如下");
+        //19.12.7 for 测试注释
+        //System.out.print("\n");
+        //System.out.println("解密state如下");
         for(int i=0;i<Nb;i++){
-            System.out.printf("%02x%02x%02x%02x",State[0][i%Nb],State[1][i%Nb],State[2][i%Nb],State[3][i%Nb]);
-            System.out.print("|");
+            //19.12.7 for 测试注释
+            //System.out.printf("%02x%02x%02x%02x",State[0][i%Nb],State[1][i%Nb],State[2][i%Nb],State[3][i%Nb]);
+            //System.out.print("|");
         }
-        System.out.print("\n");
+        //19.12.7 for 测试注释
+//        System.out.print("\n");
         byte[] output=new byte[16];
         for(int j=0;j<4;j++)
         {
@@ -583,12 +587,13 @@ public class AES {
             }
         }
         KeyExpansion(key);
-        System.out.print("\n");
-        System.out.println("初始state如下");
-        for(int i=0;i<Nb;i++){
-            System.out.printf("%02x%02x%02x%02x",State[0][i%Nb],State[1][i%Nb],State[2][i%Nb],State[3][i%Nb]);
-            System.out.print("|");
-        }
+        //19.12.7 for 测试注释
+//        System.out.print("\n");
+//        System.out.println("初始state如下");
+//        for(int i=0;i<Nb;i++){
+//            System.out.printf("%02x%02x%02x%02x",State[0][i%Nb],State[1][i%Nb],State[2][i%Nb],State[3][i%Nb]);
+//            System.out.print("|");
+//        }
 //        System.out.print("\n");
         AddRoundKey(0);
         for(int i=1;i<this.Nr;i++)
