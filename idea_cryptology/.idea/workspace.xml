@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="idea_cryptology:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="89006c41-db01-4c92-a5b0-304ff12545a1" name="Default Changelist" comment="">
+    <list default="true" id="89006c41-db01-4c92-a5b0-304ff12545a1" name="Default Changelist" comment="gui 1.0">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/idea_cryptology_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/JFrameDemo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Swing_Frame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/crypt_swing.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/socket/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/socket/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/idea_cryptology/AES.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/idea_cryptology/AES.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AES.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AES.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AES.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,73 +42,76 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="idea_cryptology" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AES.java">
+        <entry file="file://$PROJECT_DIR$/src/GUI/JFrameDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1666">
-              <caret line="498" column="14" lean-forward="true" selection-start-line="498" selection-start-column="14" selection-end-line="498" selection-end-column="14" />
+            <state relative-caret-position="2162">
+              <caret line="97" column="33" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
               <folding>
-                <element signature="n#!!doc;n#State#0;n#AES#0" />
-                <element signature="method#main#0;class#AES#0" />
-                <element signature="e#44334#44352#0" />
-                <element signature="method#Rijndael#0;class#AES#0" />
-                <element signature="e#47626#47658#0" />
-                <element signature="method#AddRoundKey#0;class#AES#0" />
-                <element signature="method#Round#0;class#AES#0" />
-                <element signature="method#FinalRound#0;class#AES#0" />
-                <element signature="method#ByteSub#0;class#AES#0" />
-                <element signature="method#ShiftRow#0;class#AES#0" />
-                <element signature="method#inv_ShiftRow#0;class#AES#0" />
-                <element signature="method#MixColumn#0;class#AES#0" />
-                <marker date="1575693377150" expanded="false" signature="57029:57570" ph="..." />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/crypt/AES.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/crypt/controller.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="42" column="51" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="72" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/socket/Client.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-207">
+              <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GUI/Swing_Frame.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1978">
+              <caret line="86" column="36" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/controller.java">
+        <entry file="file://$PROJECT_DIR$/src/GUI/crypt_swing.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="177" column="24" selection-start-line="177" selection-start-column="24" selection-end-line="177" selection-end-column="24" />
+            <state relative-caret-position="414">
+              <caret line="45" column="41" lean-forward="true" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
               <folding>
-                <element signature="method#readfile_encrypt#0;class#controller#0" />
-                <element signature="e#1949#3113#0" />
-                <element signature="e#2971#3053#0" />
-                <element signature="e#2296#3078#1" />
-                <element signature="e#2237#2294#1" />
-                <element signature="e#2362#2461#1" />
-                <element signature="e#4153#4193#0" />
-                <element signature="e#5127#5185#0" />
-                <element signature="e#1790#1834#0" />
-                <element signature="e#5794#5876#0" />
-                <element signature="e#6981#7011#0" />
-                <element signature="e#7316#7370#0" />
-                <element signature="e#10814#10828#0" />
+                <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://D:/AA program/JAVA/jdk-13/lib/src.zip!/java.base/java/lang/invoke/DirectMethodHandle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6003">
-              <caret line="309" selection-start-line="309" selection-end-line="309" />
-              <folding>
-                <element signature="e#13575#13576#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jrt://D:/AA program/JAVA/jdk-13!/java.base/java/lang/invoke/DirectMethodHandle$Holder.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16284">
-              <caret line="714" column="16" selection-start-line="714" selection-start-column="16" selection-end-line="714" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -150,8 +164,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/box.java" />
+        <option value="$PROJECT_DIR$/src/socket/Server.java" />
+        <option value="$PROJECT_DIR$/src/socket/Client.java" />
+        <option value="$PROJECT_DIR$/src/GUI/JFrameDemo.java" />
+        <option value="$PROJECT_DIR$/src/GUI/Swing_Frame.java" />
         <option value="$PROJECT_DIR$/src/AES.java" />
         <option value="$PROJECT_DIR$/src/controller.java" />
+        <option value="$PROJECT_DIR$/src/crypt/AES.java" />
+        <option value="$PROJECT_DIR$/src/crypt/controller.java" />
+        <option value="$PROJECT_DIR$/src/GUI/crypt_swing.java" />
       </list>
     </option>
   </component>
@@ -177,16 +198,59 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="980" />
-    <option name="height" value="1060" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="974" />
+    <option name="height" value="1055" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="idea_cryptology" type="b2602c69:ProjectViewProjectNode" />
+              <item name="idea_cryptology" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="idea_cryptology" type="b2602c69:ProjectViewProjectNode" />
+              <item name="idea_cryptology" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="idea_cryptology" type="b2602c69:ProjectViewProjectNode" />
+              <item name="idea_cryptology" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="idea_cryptology" type="b2602c69:ProjectViewProjectNode" />
+              <item name="idea_cryptology" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="idea_cryptology_jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="idea_cryptology" type="b2602c69:ProjectViewProjectNode" />
+              <item name="idea_cryptology" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="idea_cryptology" type="b2602c69:ProjectViewProjectNode" />
+              <item name="idea_cryptology" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="crypt" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -201,7 +265,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
@@ -218,10 +282,42 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.controller">
-    <configuration name="AES" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AES" />
+  <component name="RunManager" selected="Application.crypt_swing">
+    <configuration name="JFrameDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.JFrameDemo" />
       <module name="idea_cryptology" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="socket.Server" />
+      <module name="idea_cryptology" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="socket.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Swing_Frame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.Swing_Frame" />
+      <module name="idea_cryptology" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -233,10 +329,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="crypt_swing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.crypt_swing" />
+      <module name="idea_cryptology" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.crypt_swing" />
+        <item itemvalue="Application.Swing_Frame" />
         <item itemvalue="Application.controller" />
-        <item itemvalue="Application.AES" />
+        <item itemvalue="Application.JFrameDemo" />
+        <item itemvalue="Application.Server" />
       </list>
     </recent_temporary>
   </component>
@@ -256,7 +368,10 @@
       <workItem from="1575504243604" duration="4984000" />
       <workItem from="1575632002651" duration="15374000" />
       <workItem from="1575647428670" duration="7862000" />
-      <workItem from="1575681930668" duration="12620000" />
+      <workItem from="1575681930668" duration="13157000" />
+      <workItem from="1575697903111" duration="10795000" />
+      <workItem from="1575718833900" duration="4069000" />
+      <workItem from="1575733047416" duration="8219000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;idea test&quot;">
       <created>1575450874805</created>
@@ -356,11 +471,18 @@
       <option name="project" value="LOCAL" />
       <updated>1575692617275</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="识别填充">
+      <created>1575694704444</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1575694704444</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59499000" />
+    <option name="totallyTimeSpent" value="83119000" />
   </component>
   <component name="TodoView" selected-index="3">
     <todo-panel id="selected-file">
@@ -372,7 +494,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="846" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1064" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
@@ -380,30 +502,30 @@
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Favorites" order="5" side_tool="true" weight="0.32995737" />
       <window_info id="Maven" order="6" weight="0.3297587" />
-      <window_info id="TODO" order="7" weight="0.11461126" />
-      <window_info id="Debug" order="8" visible="true" weight="0.04155496" />
+      <window_info id="TODO" order="7" weight="0.114605546" />
+      <window_info id="Debug" order="8" weight="0.04155496" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32903227" />
       <window_info anchor="bottom" id="Cvs" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Docker" order="4" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="5" />
       <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Project" order="1" weight="0.16487935" />
+      <window_info active="true" anchor="right" content_ui="combo" id="Project" order="1" visible="true" weight="0.32675907" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Messages" order="6" sideWeight="0.19883041" weight="0.19034852" />
+      <window_info anchor="right" id="Messages" order="6" sideWeight="0.19883041" weight="0.25373134" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Terminal" order="9" weight="0.32908848" />
-      <window_info anchor="right" id="Database" order="10" weight="0.17962466" />
+      <window_info anchor="right" id="Terminal" order="9" weight="0.18976545" />
+      <window_info anchor="right" id="Database" order="10" weight="0.15405117" />
       <window_info anchor="right" id="Version Control" order="11" weight="0.3243968" />
-      <window_info active="true" anchor="right" id="Run" order="12" sideWeight="0.8011696" visible="true" weight="0.2969169" />
+      <window_info anchor="right" id="Run" order="12" sideWeight="0.8011696" weight="0.3411514" />
     </layout>
     <layout-to-restore>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
@@ -505,7 +627,10 @@
     <MESSAGE value="更改代码提高加密速度" />
     <MESSAGE value="20M/s" />
     <MESSAGE value="30M/s" />
-    <option name="LAST_COMMIT_MESSAGE" value="30M/s" />
+    <MESSAGE value="可以识别填充了" />
+    <MESSAGE value="识别填充" />
+    <MESSAGE value="gui 1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="gui 1.0" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -523,20 +648,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/box.java" />
-    <entry file="jar://D:/AA program/JAVA/jdk-13/lib/src.zip!/java.base/java/lang/invoke/DirectMethodHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6003">
-          <caret line="309" selection-start-line="309" selection-end-line="309" />
-          <folding>
-            <element signature="e#13575#13576#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jrt://D:/AA program/JAVA/jdk-13!/java.base/java/lang/invoke/DirectMethodHandle$Holder.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16284">
           <caret line="714" column="16" selection-start-line="714" selection-start-column="16" selection-end-line="714" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/socket/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="32" column="53" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -557,46 +682,96 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://D:/AA program/JAVA/jdk-13/lib/src.zip!/java.base/java/lang/invoke/DirectMethodHandle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1107">
+          <caret line="293" column="60" selection-start-line="293" selection-start-column="60" selection-end-line="293" selection-end-column="60" />
+          <folding>
+            <element signature="e#13521#13522#0" expanded="true" />
+            <element signature="e#13575#13576#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AES.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1666">
-          <caret line="498" column="14" lean-forward="true" selection-start-line="498" selection-start-column="14" selection-end-line="498" selection-end-column="14" />
+        <state>
+          <caret selection-end-column="12" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="n#!!doc;n#State#0;n#AES#0" />
             <element signature="method#main#0;class#AES#0" />
-            <element signature="e#44334#44352#0" />
             <element signature="method#Rijndael#0;class#AES#0" />
-            <element signature="e#47626#47658#0" />
             <element signature="method#AddRoundKey#0;class#AES#0" />
             <element signature="method#Round#0;class#AES#0" />
             <element signature="method#FinalRound#0;class#AES#0" />
             <element signature="method#ByteSub#0;class#AES#0" />
             <element signature="method#ShiftRow#0;class#AES#0" />
-            <element signature="method#inv_ShiftRow#0;class#AES#0" />
             <element signature="method#MixColumn#0;class#AES#0" />
-            <marker date="1575693377150" expanded="false" signature="57029:57570" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="177" column="24" selection-start-line="177" selection-start-column="24" selection-end-line="177" selection-end-column="24" />
+        <state relative-caret-position="115">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/JFrameDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2162">
+          <caret line="97" column="33" selection-start-line="97" selection-start-column="33" selection-end-line="97" selection-end-column="33" />
           <folding>
-            <element signature="method#readfile_encrypt#0;class#controller#0" />
-            <element signature="e#1949#3113#0" />
-            <element signature="e#2971#3053#0" />
-            <element signature="e#2296#3078#1" />
-            <element signature="e#2237#2294#1" />
-            <element signature="e#2362#2461#1" />
-            <element signature="e#4153#4193#0" />
-            <element signature="e#5127#5185#0" />
-            <element signature="e#1790#1834#0" />
-            <element signature="e#5794#5876#0" />
-            <element signature="e#6981#7011#0" />
-            <element signature="e#7316#7370#0" />
-            <element signature="e#10814#10828#0" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/crypt/AES.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/crypt/controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="42" column="51" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/socket/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-207">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/Swing_Frame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1978">
+          <caret line="86" column="36" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GUI/crypt_swing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="45" column="41" lean-forward="true" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -604,6 +779,31 @@
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>idea_cryptology:jar</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
           <splitter-proportions>
@@ -618,6 +818,17 @@
       <state key="JdkListConfigurable.UI">
         <settings>
           <last-edited>10</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>
