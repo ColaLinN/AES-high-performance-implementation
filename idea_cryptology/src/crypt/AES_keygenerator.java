@@ -79,6 +79,21 @@ public class AES_keygenerator {
         return null;
     }
 
+    public static String encrypt1(byte[] content, Cipher cipher) {
+        SecretKey secretKey;
+
+        try {
+            byte[] result = cipher.doFinal(content);
+            String aft_aes = parseByte2HexStr(result);
+            return aft_aes;
+        } catch (IllegalBlockSizeException e) {
+            e.printStackTrace();
+        } catch (BadPaddingException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
     public static String decrypt(String aft_aes, String password) {
         byte[] content;
 

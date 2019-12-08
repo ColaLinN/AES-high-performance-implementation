@@ -59,7 +59,7 @@ public class controller {
 //            System.out.print("\n以上读的数据");
 //            System.out.println("\n读数据的字节长度："+inputbyte.length);
             byte[] inputbyte_for_encrypt=new  byte[16];//最终拼接成的第三方byte
-            startTime=System.currentTimeMillis();
+            //startTime=System.currentTimeMillis();
             for(int i=0;i<inputbyte.length;){
                 if(inputbyte.length-i>=16) {
                     System.arraycopy(inputbyte,i,inputbyte_for_encrypt,0,16);
@@ -71,7 +71,7 @@ public class controller {
                     i=inputbyte.length;
                 }
 //                j=1;//j是上面定义的，要用就重写变量名
-//                System.out.print("\n-------------------before:"+new String(inputbyte_for_encrypt)+"");//字节转字符串
+                System.out.print("\n-------------------before:"+new String(inputbyte_for_encrypt)+"");//字节转字符串
 //                System.out.println("\n读的state如下");
 //                for(byte X:inputbyte_for_encrypt)//输出读的128（也可能是填充成的）位的字节流
 //                {
@@ -90,11 +90,11 @@ public class controller {
                 byte[] encryptdata=aes.Rijndael(inputbyte_for_encrypt);//加密
                 outputStream.write(encryptdata);
 //                encryptdata=aes.decode(encryptdata,key);
-//                System.out.println("--------------------after:"+new String(encryptdata));//字节转字符串
+                System.out.println("--------------------after:"+new String(encryptdata));//字节转字符串
             }
-            endTime =  System.currentTimeMillis();
-            usedTime = (endTime-startTime);
-            System.out.println("加密锁时间："+usedTime+"毫秒");
+            //endTime =  System.currentTimeMillis();
+            //usedTime = (endTime-startTime);
+            //System.out.println("加密锁时间："+usedTime+"毫秒");
             outputStream.close();
             return null;
         }catch(Exception e){
