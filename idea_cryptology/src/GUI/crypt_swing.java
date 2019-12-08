@@ -210,12 +210,15 @@ public class crypt_swing {
 
         //分析区
 //        JTextField jTextArea_analyse=new JTextField("加密测速");
+        JTextField jTextFieldan=new JTextField("开始加密");
+        jTextFieldan.setPreferredSize(new Dimension(00,100));
         JButton jButton_analyse= new JButton("开始加密");
         JProgressBar jProgressBar=new JProgressBar(0,100);
         JButton jButton_analyse_4= new JButton("java自带");
         Box box_analyse=Box.createVerticalBox();
 //        box_analyse.add(jTextArea_analyse);
 //        box_analyse.add(Box.createHorizontalStrut(100));
+        box_analyse.add(jTextFieldan);
         box_analyse.add(jButton_analyse);
         box_analyse.add(jProgressBar);
         box_analyse.add(jButton_analyse_4);
