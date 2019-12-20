@@ -19,7 +19,7 @@ import static crypt.AES_keygenerator.*;
 public class crypt_swing {
     public static void main(String[] args) {
         int i1=1;
-        JFrame frame=new JFrame("Java示例程序");
+        JFrame frame=new JFrame("2017301500076-林峰吕-密码学课程设计");
         Box box=Box.createVerticalBox();
 
         Box box1=Box.createHorizontalBox();
@@ -39,7 +39,7 @@ public class crypt_swing {
 
         //生成密钥板块
         JLabel label_key_generator =new JLabel("随机生成：");
-        JTextField textField_key_generator=new JTextField("lFL");
+        JTextField textField_key_generator=new JTextField("林峰吕");
         JButton button_key=new JButton("2.生成密钥");
         Box box2_generator_key=Box.createHorizontalBox();
         box2_generator_key.add(label_key_generator);
@@ -210,18 +210,27 @@ public class crypt_swing {
 
         //分析区
 //        JTextField jTextArea_analyse=new JTextField("加密测速");
-        JTextField jTextFieldan=new JTextField("开始加密");
-        jTextFieldan.setPreferredSize(new Dimension(00,100));
-        JButton jButton_analyse= new JButton("开始加密");
-        JProgressBar jProgressBar=new JProgressBar(0,100);
+//        JTextField jTextFieldan=new JTextField("开始加密");
+//        jTextFieldan.setPreferredSize(new Dimension(00,100));
+        JButton jButton_analyse= new JButton("自写加密");
+//        JProgressBar jProgressBar=new JProgressBar(0,100);
         JButton jButton_analyse_4= new JButton("java自带");
+        Box box_mycrypto=Box.createHorizontalBox();
+        box_mycrypto.add(Box.createHorizontalStrut(70));
+        box_mycrypto.add(jButton_analyse);
+        Box box_javacrypt=Box.createHorizontalBox();
+        box_javacrypt.add(Box.createHorizontalStrut(70));
+        box_javacrypt.add(jButton_analyse_4);
+
         Box box_analyse=Box.createVerticalBox();
 //        box_analyse.add(jTextArea_analyse);
 //        box_analyse.add(Box.createHorizontalStrut(100));
-        box_analyse.add(jTextFieldan);
-        box_analyse.add(jButton_analyse);
-        box_analyse.add(jProgressBar);
-        box_analyse.add(jButton_analyse_4);
+//        box_analyse.add(jTextFieldan);
+        box_analyse.add(box_mycrypto);
+        box_analyse.add(box_javacrypt);
+
+//        box_analyse.add(jProgressBar);
+//        box_analyse.add(jButton_analyse_4);
 
         //底部加密时间等信息
         JTextPane jTextPane = new JTextPane();
@@ -278,9 +287,10 @@ public class crypt_swing {
                     {
                         aes.Rijndael(newkey);//这个key也正好当作16字节输入
                     }
-                    System.out.println("第"+i+"MB");
-                    jProgressBar.setValue(i);
-                    jProgressBar.setString(i+"%");
+//                    for(int j=0;j<20;j++) System.out.println("\n\n");
+                    System.out.println("第"+i+"MB|"+(int)(((double)i/128)*100)/1+"%");
+//                    jProgressBar.setValue(i);
+//                    jProgressBar.setString(i+"%");
                 }
                 long endTime = System.currentTimeMillis();
                 long usedTime = (endTime - startTime);
@@ -315,9 +325,9 @@ public class crypt_swing {
                         {
                             encrypt1(newkey,cipher);
                         }
-                        System.out.println("第"+i+"MB");
-                        jProgressBar.setValue(i);
-                        jProgressBar.setString(i+"%");
+                        System.out.println("第"+i+"MB|"+(int)(((double)i/128)*100)/1+"%");
+//                        jProgressBar.setValue(i);
+//                        jProgressBar.setString(i+"%");
                     }
                     long endTime = System.currentTimeMillis();
                     long usedTime = (endTime - startTime);
@@ -485,9 +495,9 @@ public class crypt_swing {
                     controller.file_decode(textField_decode.getText(), textField_decode_addr.getText(),keybyte_decode);
                     long endTime = System.currentTimeMillis();
                     long usedTime = (endTime - startTime);
-                    System.out.println("加密时间：" + usedTime + "毫秒");
+                    System.out.println("解密时间：" + usedTime + "毫秒");
                     display_txt(textField_decode_addr,jTextAread_output);
-                    jTextPane.setText("\"加密成功，已把输入框内容写入"+textField_decode.getText()+"中，并且把解密内容写入"+textField_decode_addr.getText()+"。用时"+usedTime+"ms");
+                    jTextPane.setText("\"解密成功，已把输入框内容写入"+textField_decode.getText()+"中，并且把解密内容写入"+textField_decode_addr.getText()+"。用时"+usedTime+"ms");
                 }catch (Exception ed2){
                     ed2.printStackTrace();
                 }
