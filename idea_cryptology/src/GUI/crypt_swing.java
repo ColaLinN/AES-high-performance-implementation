@@ -294,8 +294,8 @@ public class crypt_swing {
                 }
                 long endTime = System.currentTimeMillis();
                 long usedTime = (endTime - startTime);
-                jTextPane.setText("耗时："+usedTime + "毫秒");
-                System.out.println("加密时间：" + usedTime + "毫秒");
+                jTextPane.setText("自写AES加密，加密了128MB数据，耗时："+usedTime + "毫秒"+",速度"+(float)128/(usedTime/(float)1000)+"MB/s");
+                System.out.println("自写AES加密，加密了128MB数据，耗时：" + usedTime + "毫秒"+",速度"+(float)128/(usedTime/(float)1000)+"MB/s");
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -331,8 +331,8 @@ public class crypt_swing {
                     }
                     long endTime = System.currentTimeMillis();
                     long usedTime = (endTime - startTime);
-                    jTextPane.setText("耗时："+usedTime + "毫秒");
-                    System.out.println("加密时间：" + usedTime + "毫秒");
+                    jTextPane.setText("java自带加密，加密了128MB数据，耗时："+usedTime + "毫秒"+",速度"+(float)128/(usedTime/(float)1000)+"MB/s");
+                    System.out.println("java自带加密，加密了128MB数据，耗时：" + usedTime + "毫秒"+",速度"+(float)128/(usedTime/(float)1000)+"MB/s");
                 }catch (Exception ead){
                     ead.printStackTrace();
                 }

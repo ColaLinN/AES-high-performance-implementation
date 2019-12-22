@@ -423,13 +423,6 @@ public class AES {
                 State[i][j]=inputstate[i+j*4];
             }
         }
-        for(int j=0;j<4;j++)
-        {
-            for(int i=0;i<4;i++)
-            {
-                State[i][j]=inputstate[i+j*4];
-            }
-        }
 //        inv_KeyExpansion(key);
         //19.12.7 for 测试注释
 //        System.out.print("\n");
@@ -500,10 +493,6 @@ public class AES {
         return output;
     }
     public byte[] Rijndael(byte[] inputstate){
-//        for(byte X:inputstate)
-//        {
-//            System.out.printf("%x",X);
-//        }
         for(int j=0;j<4;j++)
         {
             for(int i=0;i<4;i++)
@@ -511,15 +500,6 @@ public class AES {
                 State[i][j]=inputstate[i+j*4];
             }
         }
-//        KeyExpansion(key);
-        //19.12.7 for 测试注释
-//        System.out.print("\n");
-//        System.out.println("初始state如下");
-//        for(int i=0;i<Nb;i++){
-//            System.out.printf("%02x%02x%02x%02x",State[0][i%Nb],State[1][i%Nb],State[2][i%Nb],State[3][i%Nb]);
-//            System.out.print("|");
-//        }
-//        System.out.print("\n");
         AddRoundKey(0);
         for(int i=1;i<this.Nr;i++)
         {

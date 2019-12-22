@@ -27,11 +27,13 @@ public class controller {
         try{
             //计时
             AES aes=new AES();
-            aes.KeyExpansion(key);
+            aes.KeyExpansion(key);//密钥扩展
             long startTime =  System.currentTimeMillis();
+            //读文件成字节流
             FileInputStream file_inputStream =new FileInputStream(new File(inputpath));
             BufferedInputStream inputStream=new BufferedInputStream(file_inputStream);
             byte[] inputbyte=new byte[inputStream.available()];
+
             inputStream.read(inputbyte);//把所有字节流读出
             inputStream.close();
             //计时file_
@@ -40,26 +42,14 @@ public class controller {
             System.out.println("读明文文件时间："+usedTime+"毫秒");
             FileOutputStream file_outputStream=new FileOutputStream(new File(outputpath));
             BufferedOutputStream outputStream=new BufferedOutputStream(file_outputStream);
-//            System.out.println("\ninputbyte的内容:"+new String(inputbyte));//字节转字符串
-
-//            int j=1;
-//            for(byte X:inputbyte)//inputbyte的字节流
-//            {
-//                System.out.printf("%2x",X);
-//                if(j%4==0)
-//                {
-//                    System.out.print("|");
-//                }
-//                if(j%16==0)
-//                {
-//                    System.out.print("\n");
-//                }
-//                j++;
-//            }
-//            System.out.print("\n以上读的数据");
-//            System.out.println("\n读数据的字节长度："+inputbyte.length);
             byte[] inputbyte_for_encrypt=new  byte[16];//最终拼接成的第三方byte
             //startTime=System.currentTimeMillis();
+//            byte[] miwenlianjie={(byte)0,(byte)0,(byte)0,(byte)0,
+//                    (byte)0,(byte)0,(byte)0,(byte)0,
+//                    (byte)0,(byte)0,(byte)0,(byte)0,
+//                    (byte)0,(byte)0,(byte)0,(byte)0};
+//            int j=0;
+            //开始正式加密
             for(int i=0;i<inputbyte.length;){
                 if(inputbyte.length-i>=16) {
                     System.arraycopy(inputbyte,i,inputbyte_for_encrypt,0,16);
@@ -70,17 +60,19 @@ public class controller {
                     Arrays.fill(inputbyte_for_encrypt,inputbyte.length-i,16,(byte)(0));//16-inputbyte.length-i
                     i=inputbyte.length;
                 }
-//                j=1;//j是上面定义的，要用就重写变量名
-                //System.out.print("\n-------------------before:"+new String(inputbyte_for_encrypt)+"");//字节转字符串
-//                System.out.println("\n读的state如下");
                 byte[] encryptdata=aes.Rijndael(inputbyte_for_encrypt);//加密
+                //以下为密文链接
+//                if(i>17) {
+//                    for(j=0;j<16;j++)
+//                    {
+//                        encryptdata[j] = (byte)((int)encryptdata[j] ^ (int)miwenlianjie[j]);
+//                        System.out.printf("%2x",miwenlianjie[j]);
+//                    }
+//                    System.out.println("hjjhhjidad");
+//                }
+//                miwenlianjie=encryptdata;
                 outputStream.write(encryptdata);
-//                encryptdata=aes.decode(encryptdata,key);
-                //System.out.println("--------------------after:"+new String(encryptdata));//字节转字符串
             }
-            //endTime =  System.currentTimeMillis();
-            //usedTime = (endTime-startTime);
-            //System.out.println("加密锁时间："+usedTime+"毫秒");
             outputStream.close();
             return null;
         }catch(Exception e){
@@ -88,7 +80,7 @@ public class controller {
         }
         return null;
     }
-    public byte[] file_decode(String inputpath,String outputpath,byte[] key){
+        public byte[] file_decode(String inputpath,String outputpath,byte[] key){
         try{
             AES aes=new AES();
             aes.inv_KeyExpansion(key);
@@ -105,62 +97,29 @@ public class controller {
             //Buffer牛逼，可以大幅提高读写文件速度
             FileOutputStream file_outputStream=new FileOutputStream(new File(outputpath));
             BufferedOutputStream outputStream=new BufferedOutputStream(file_outputStream);
-
+//            byte[] miwenlianjie=new  byte[16];
+//            byte[] miwenlianjie_midle=new  byte[16];
+//            int miwenlianjie_i=0;
             byte[] inputbyte_for_encrypt=new  byte[16];//最终拼接成的第三方byte
-            for(int i=0;i<inputbyte.length;){
-                if(inputbyte.length-i>16) {
-                    System.arraycopy(inputbyte,i,inputbyte_for_encrypt,0,16);
-                    i=i+16;
-                    byte[] decodedata =aes.decode(inputbyte_for_encrypt);
+            for(int i=0;i<inputbyte.length;) {
+                if (inputbyte.length - i > 16) {
+                    System.arraycopy(inputbyte, i, inputbyte_for_encrypt, 0, 16);
+                    i = i + 16;
+                    byte[] decodedata = aes.decode(inputbyte_for_encrypt);
                     outputStream.write(decodedata);
-                }
-                else{
-                    System.arraycopy(inputbyte,i,inputbyte_for_encrypt,0,inputbyte.length-i);
-                    Arrays.fill(inputbyte_for_encrypt,inputbyte.length-i,16,(byte)(00));//16-inputbyte.length-i
-                    i=inputbyte.length;
-                    //System.out.println("--------------------after:"+new String(inputbyte_for_encrypt));//字节转字符串
-                    byte[] decodedata =aes.decode(inputbyte_for_encrypt);
-                    //System.out.println("--------------------after:"+new String(decodedata));//字节转字符串
-                    int mark=0;//标记0
-                    int j=1;
-//                     for(byte X:decodedata)
-//                    {
-//                        System.out.printf("%02x",X);
-//                        if(j%4==0)
-//                        {
-//                            System.out.print("|");
-//                        }
-//                        if(j%16==0)
-//                        {
-//                            System.out.print("\n");
-//
-//                        }
-//                        j++;
-//                    }
-                    for(j=0;j<decodedata.length;j++)
-                    {
-                        if(decodedata[j]==0x00);
+                } else {
+                    System.arraycopy(inputbyte, i, inputbyte_for_encrypt, 0, inputbyte.length - i);
+                    Arrays.fill(inputbyte_for_encrypt, inputbyte.length - i, 16, (byte) (00));//16-inputbyte.length-i
+                    i = inputbyte.length;
+                    byte[] decodedata = aes.decode(inputbyte_for_encrypt);
+                    int mark = 0;//标记0
+                    int j = 1;
+                    for (j = 0; j < decodedata.length; j++) {
+                        if (decodedata[j] == 0x00) ;
                         else mark++;
                     }
-                    //System.out.println("\n--------------------after:"+new String(decodedata));//字节转字符串
-                    byte[] decodedata1=new byte[mark];
-                    //System.arraycopy(decodedata,0,decodedata1,0,mark);
-//                    j=1;
-//                    for(byte X:decodedata1)
-//                    {
-//                        System.out.printf("%02x",X);
-//                        if(j%16==0)
-//                        {
-//                            System.out.print("\n");
-//
-//                        }
-//                        if(j%4==0)
-//                        {
-//                            System.out.print("|");
-//                        }
-//                        j++;
-//                    }
-                    //System.out.println("\n--------------------after:"+new String(decodedata1));//字节转字符串
+                    byte[] decodedata1 = new byte[mark];
+                    System.arraycopy(decodedata, 0, decodedata1, 0, mark);
                     outputStream.write(decodedata1);
                 }
             }
